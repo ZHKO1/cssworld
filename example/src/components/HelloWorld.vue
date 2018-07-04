@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       hrefArray: [
-        {url:"/part1",text:"第一、二章",items:[
+        {url:"/part1",text:"第一、二、三章",items:[
           "关系选择器",
           "未定义行为",
         ]}
