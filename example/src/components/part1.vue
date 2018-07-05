@@ -71,6 +71,33 @@
       </div>
     </div>
     <div class="container" style="width:50%">
+      <h5>max-width权重比!important还高，min-width和max-width冲突，min-width胜</h5>
+      <img src="../assets/logo.png" class="img_type1" style="width:480px!important;">
+    </div>
+    <div class="container" style="width:50%">
+      <div class="table">
+        <div class="td">
+          <input id="check1" type="checkbox">
+          <p>个人觉得，display:table-cell最强的应用是可以任意个数列表的等宽效果。</p>
+          <div class="element">
+            <p>display:table-cell其他一些应用，例如，两栏自适应布局，垂直居中效果等等都是可以通过其他技术手段模拟出来的，但是，根据列表个数自动等宽的效果，其他CSS是很难模拟的，尤其当需要兼容IE8浏览器的时候。</p>
+          </div>
+          <label for="check1" class="check-in">更多↓</label>
+          <label for="check1" class="check-out">收起↑</label>
+        </div>
+        <div class="td">
+          <input id="check2" type="checkbox">
+          <p>个人觉得，display:table-cell最强的应用是可以任意个数列表的等宽效果。</p>
+          <div class="element">
+            <p>display:table-cell其他一些应用，例如，两栏自适应布局，垂直居中效果等等都是可以通过其他技术手段模拟出来的，但是，根据列表个数自动等宽的效果，其他CSS是很难模拟的，尤其当需要兼容IE8浏览器的时候。</p>
+            <p>然而，此方法也有局限性，就是只能实现单行列表的等分，所以，如果我们希望列表数目超过一定值的时候变成多行，就需要根据数目不同，输出不同的DOM结构，仅仅靠CSS有难度。</p>
+          </div>
+          <label for="check2" class="check-in">更多↓</label>
+          <label for="check2" class="check-out">收起↑</label>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="width:50%">
       <div style="background:yellow"><span style="display: inline-block"></span></div>
     </div>
   </div>
@@ -219,5 +246,49 @@ export default {
   .box_style2.rel > .child {
     width: 100%;
     position: absolute;
+  }
+  img.img_type1 {
+    max-width: 256px;
+  }
+
+  .table {
+    display: table;
+    width: 100%;
+    width: calc(100% - 30px);
+    max-width: 400px;
+    margin: auto;
+    table-layout: fixed;
+    text-align: left;
+  }
+  .table .td {
+    display: table-cell;
+    padding: 5px;
+  }
+
+  .table input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0 0 0 0);
+  }
+  .table .check-in,
+  .check-out {
+    color: #34538b;
+    cursor: pointer;
+  }
+  .table .check-out {
+    display: none;
+  }
+  .table :checked ~ .check-out {
+    display: inline-block;
+  }
+  .table :checked ~ .check-in {
+    display: none;
+  }
+  .table .element {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s;
+  }
+  .table :checked ~ .element {
+    max-height: 666px;
   }
 </style>

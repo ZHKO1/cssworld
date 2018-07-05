@@ -89,3 +89,14 @@ height:100%要起效果，其元素的父级必须要有一个可以生效的高
 答案是规范已指定了如果包含块的搞定没有显式指定，而且该元素也不是绝对定位，那么计算值是auto
 至于规范内宽度的解释，作者解释得不清楚，貌似也是各厂商的默认未定义行为
 注意，绝对定位元素的百分比计算是根据padding-box来的，非绝对定位元素则是相对于content box计算的
+
+3.3 CSSmin-width/max-width 和 min-height/max-height二三事
+MDN和W3C维基文档那个都显示min-width/min-height的初始值是0
+不过作者测试下来其实是auto（可以看原书作者是如何验证的）
+max-width和max-height的初始值是none，如果是auto的话，就可能导致max-width覆盖width，子元素永远不能设置为比auto计算值更大的宽度值了
+!important权重很高，比元素style属性声明还要高，也依然高不过max-width
+min-width和max-width冲突，min-width胜
+max-height的应用场景，展开收缩下拉框
+
+3.4 内联元素
+幽灵空白节点
