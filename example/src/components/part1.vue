@@ -226,6 +226,7 @@ export default {
     width: 100%;
     background-color: #34538b;
     color: #fff;
+    text-align: left
   }
   .box_style2 {
     width: 200px;
