@@ -80,6 +80,27 @@
       <h6>content attr属性值内容生成</h6>
       <div style="background: yellow"></div>
     </div>
+    <div class="container type10">
+      <h6 style="text-align: center">content计数器 错误的示范 自行思考错误原因</h6>
+      <div class="reset">
+        <div class="counter">我是王小二</div>
+        <div class="reset">
+          <div class="counter">我是王小二的大儿子</div>
+          <div class="counter">我是王小二的二儿子</div>
+          <div class="reset">
+            <div class="counter">我是王小二的二儿子的大孙子</div>
+            <div class="counter">我是王小二的二儿子的二孙子</div>
+            <div class="counter">我是王小二的二儿子的小孙子</div>
+          </div>
+          <div class="counter">我是王小二的三儿子</div>
+        </div>
+        <div class="counter">我是王小三</div>
+        <div class="counter">我是王小四</div>
+        <div class="reset">
+          <div class="counter">我是王小四的大儿子</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -282,6 +303,17 @@
          content:attr(style);
          width:100%;
       }
+    }
+  }
+  .type10{
+    text-align:left;
+    .reset {
+      padding-left: 20px;
+      counter-reset: wangxiaoer;
+    }
+    .counter:before {
+      content: counters(wangxiaoer, '-') '. ';
+      counter-increment: wangxiaoer;
     }
   }
 
