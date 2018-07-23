@@ -108,6 +108,20 @@
     <div class="container type12">
       <a href="">登录</a><a href="">注册</a>
     </div>
+    <div class="container type13">
+      <div class="box">
+        <img src="../assets/top.jpg">
+      </div>
+    </div>
+    <div class="container type14">
+      <h6>测试内联元素设置padding百分比会有什么表现，可以看到padding:0 50%;下内左边的宽度和干右边宽度是一样的</h6>
+      <h6>如果是padding:50%;则下面的一块会覆盖掉上面一块</h6>
+      <h6>顺便也可以测试空文本下padding:50%;是否正方形，如果不是如何解决，原书有讲</h6>
+      <span>内有文字若干</span>
+    </div>
+    <div class="container type15">
+      <button>FUCKYOU</button>
+    </div>
   </div>
 </template>
 
@@ -347,6 +361,33 @@
       padding: 10px 3px 1px;
       margin-left: 6px;
       border-left: 1px solid gray;
+    }
+  }
+  .type13{
+    .box {
+      padding: 10% 50%;
+      position: relative;
+    }
+    .box > img {
+      position: absolute;
+      width: 100%; height: 100%;
+      left: 0; top: 0;
+    }
+  }
+  .type14{
+    width:300px;
+    font-size: 14px;
+    .box{
+      border: 2px dashed #cd0000
+    }
+    span{
+      padding:0 50%;
+      background: yellow;
+    }
+  }
+  .type15{
+    button{
+      padding:0px;
     }
   }
 </style>
