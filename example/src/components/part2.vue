@@ -101,6 +101,13 @@
         </div>
       </div>
     </div>
+    <div class="container type11">
+      <div></div>
+      <a href="">链接</a>
+    </div>
+    <div class="container type12">
+      <a href="">登录</a><a href="">注册</a>
+    </div>
   </div>
 </template>
 
@@ -316,5 +323,30 @@
       counter-increment: wangxiaoer;
     }
   }
-
+  .type11{
+    overflow:auto;
+    div{
+      width:80px;
+      height:80px;
+      background:yellow;
+      box-sizing: border-box;
+      padding:20px 60px;
+      margin: auto;
+    }
+    a {
+      padding:50px;
+      background-color: #cd0000;
+      color: #fff;
+    }
+  }
+  .type12{
+    font-size: 14px;
+    a + a:before {
+      content: "";
+      font-size: 0;
+      padding: 10px 3px 1px;
+      margin-left: 6px;
+      border-left: 1px solid gray;
+    }
+  }
 </style>
