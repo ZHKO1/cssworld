@@ -120,7 +120,14 @@
       <span>内有文字若干</span>
     </div>
     <div class="container type15">
-      <button>FUCKYOU</button>
+      <h6>button在不同浏览器下padding有不同表现，解决方案是搞个label for=""</h6>
+      <h6>火狐浏览器下可能需要加个button::-moz-focus-inner{padding:0;}（这里我实践过了，暂且看不出什么问题）</h6>
+      <h6>IE浏览器下可能需要加个button{overflow:visible}</h6>
+      <button>按钮</button>
+    </div>
+    <div class="container type16">
+      <i class="icon-menu"></i>
+      <i class="icon-dot"></i>
     </div>
   </div>
 </template>
@@ -388,6 +395,36 @@
   .type15{
     button{
       padding:0px;
+    }
+    button::-moz-focus-inner{
+      padding:0;
+    }
+    button{
+      overflow:visible;
+    }
+  }
+  .type16{
+    i{
+      vertical-align: middle;
+      margin: 0 20px;
+    }
+    .icon-menu {
+      display: inline-block;
+      width: 140px; height: 10px;
+      padding: 35px 0;
+      border-top: 10px solid;
+      border-bottom: 10px solid;
+      background-color: currentColor;
+      background-clip: content-box;
+    }
+    .icon-dot {
+      display: inline-block;
+      width: 100px; height: 100px;
+      padding: 10px;
+      border: 10px solid;
+      border-radius: 50%;
+      background-color: currentColor;
+      background-clip: content-box;
     }
   }
 </style>
