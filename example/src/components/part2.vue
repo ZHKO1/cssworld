@@ -126,9 +126,66 @@
       <button>按钮</button>
     </div>
     <div class="container type16">
+      <h6>注意background-color: currentColor; background-clip: content-box;</h6>
       <i class="icon-menu"></i>
       <i class="icon-dot"></i>
     </div>
+    <div class="container type17">
+      <h6>margin不仅仅能改变普通流体元素水平方向下的尺寸</h6>
+      <h6>还能改变绝对定位元素水平或垂直方向的尺寸</h6>
+      <div class="box"></div>
+    </div>
+    <div class="container type18">
+      <div class="container">
+        <h4>左侧固定</h4>
+        <div class="box box-left">
+          <img src="../assets/makelei.png" class="img">
+          <p>DOM文档流中，图片定宽在左侧，文字内容在右侧，和视觉呈现的前后顺序一致。</p>
+        </div>
+        <h4>右侧固定-DOM顺序相反</h4>
+        <div class="box box-right">
+          <img src="../assets/makelei.png" class="img">
+          <p>DOM文档流中，图片定宽在左侧，视觉上却在右侧，顺序表现不一致。</p>
+        </div>
+        <h4>右侧固定-DOM顺序和视觉一致</h4>
+        <div class="box box-right-same">
+          <div class="full">
+            <p>DOM文档流中，图片定宽在右侧，视觉呈现也在右侧，顺便表现此时一致。</p>
+          </div>
+          <img src="../assets/makelei.png" class="img">
+        </div>
+      </div>
+    </div>
+    <div class="container type19">
+      <ul class="ui">
+        <li><a href="#" >首页</a></li>
+        <li><a href="#">登录</a></li>
+        <li><a href="#">注册</a></li>
+        <li><a href="#">服务大厅</a></li>
+        <li><a href="#">需求大厅</a></li>
+      </ul>
+    </div>
+    <div class="container type20">
+      <h6>padding:50px 0;容器有滚动条情况下，火狐浏览器和IE都看不到padding-bottom，解决方案是用子元素的margin-bottom来解决</h6>
+      <div style="height:100px;padding:50px 0;overflow: auto;border: 1px solid red;">
+        <img src="../assets/makelei.png" height="300" style="display: block">
+      </div>
+    </div>
+    <div class="container type21" style="max-width: 600px;overflow: hidden;">
+      <h6>1.父元素使用overflow:hidden能取消浮动，高度依然是由子元素高度来撑开 2.子元素的外部尺寸高度是由padding和margin来做到的，设定很大的值是为了保证背景足够</h6>
+      <h6>点击色块，能增加观点，查看效果</h6>
+      <div id="colLeft" class="column-left" @click="addLeft">
+        <h4>一种布局方式</h4>
+        <p>观点1</p>
+      </div>
+      <div id="colRight" class="column-right" @click="addRight">
+        <h4>反方观点</h4>
+        <p>观点1</p>
+      </div>
+    </div>
+    <div class="container type22">
+    </div>
+
   </div>
 </template>
 
@@ -137,9 +194,21 @@
   export default {
     name: 'part2',
     methods: {
+      addLeft: function(){
+        var colLeft = document.getElementById("colLeft");
+        this.indexLeft++;
+        colLeft.insertAdjacentHTML('beforeend', '<p>观点'+ this.indexLeft +'</p>');
+      },
+      addRight: function(){
+        var colRight = document.getElementById("colRight");
+        this.indexRight ++;
+        colRight.insertAdjacentHTML('beforeend', '<p>观点'+ this.indexRight +'</p>');
+      },
     },
     data () {
       return {
+        indexLeft:1,
+        indexRight:1,
       }
     },
     mounted:function () {
@@ -425,6 +494,100 @@
       border-radius: 50%;
       background-color: currentColor;
       background-clip: content-box;
+    }
+  }
+  .type17{
+    width: 500px;
+    height: 300px;
+    position: relative;
+    .box{
+      position: absolute;
+      top:0px;
+      left:0px;
+      right:0px;
+      bottom:0px;
+      margin: 100px;
+      background:yellow;
+    }
+  }
+  .type18{
+    height:550px;
+    .container{
+      width: 300px;
+      margin: auto;
+      text-align: left;
+      animation: width 3s infinite alternate;
+      @keyframes width {
+        from { width: 300px; }
+        to   { width: 260px; }
+      }
+      .box {
+        overflow: hidden;
+      }
+      .img {
+        width: 100px; height: 100px;
+      }
+      p{
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      /* 左浮动 */
+      .box-left > img {
+        float: left;
+      }
+      .box-left > p {
+        margin-left: 140px;
+      }
+      /* 右浮动，但图片DOM在前 */
+      .box-right > img {
+        float: right;
+      }
+      .box-right > p {
+        margin-right: 140px;
+      }
+      /* 右浮动，图片DOM在后，和视觉表现一致 */
+      .box-right-same > .full {
+        width: 100%;
+        float: left;
+      }
+      .box-right-same > .full > p {
+        margin-right: 140px;
+      }
+      .box-right-same > img {
+        float: left;
+        margin-left: -128px;
+      }
+    }
+  }
+  .type19{
+    width:300px;
+    .ui{
+      height:50px;
+      list-style: none;
+      margin:0 -30px 0 0;
+      padding:0;
+    }
+    .ui li{
+      width:78px;
+      border:1px solid red;
+      margin:0 30px 0 0;
+      float: left;/*该处换为display:inline-block;同样效果*/
+    }
+  }
+  .type21{
+    .column-left,
+    .column-right {
+      width: 50%;
+      float: left;
+      margin-bottom: -100px;
+      padding-bottom: 100px;
+      color: #fff;
+    }
+    .column-left {
+      background-color: #34538b;
+    }
+    .column-right {
+      background-color: #cd0000;
     }
   }
 </style>
