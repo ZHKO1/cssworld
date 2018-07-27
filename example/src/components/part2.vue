@@ -184,8 +184,41 @@
       </div>
     </div>
     <div class="container type22">
+      <div class="container_">
+        <h2>CSS世界</h2>
+      </div>
     </div>
-
+    <div class="container type23">
+      <h6 style="border: 1px solid red">空块级元素的margin合并</h6>
+      <div class="father">
+        <span>fuck</span>
+        <div class="son"></div>
+      </div>
+    </div>
+    <h6 style="border: 1px solid red">依靠margin:auto来居中的例子</h6>
+    <div class="container type24">
+      <div class="son"></div>
+    </div>
+    <div class="container type25">
+      <div class="son"></div>
+    </div>
+    <div class="container type26">
+      <h6 style="border: 1px solid red">来看看内联元素的margin渲染是什么情况</h6>
+      <span>FUCK YOU</span>
+    </div>
+    <div class="container type27">
+      <h6 style="border: 1px solid red">margin失效情形，作者给出的的第六个情况，鞭长莫及导致marigi你无效</h6>
+      <div class="box">
+        <img src="../assets/makelei.png" width="100" height="100" alt="">
+        <p>内容</p>
+      </div>
+    </div>
+    <div class="container type28">
+      <h6 style="border: 1px solid red">margin失效情形，作者给出的的第七个情况，内联特性导致margin无效</h6>
+      <div class="box">
+        <img src="../assets/makelei.png" width="96" height="96" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -234,7 +267,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style scoped lang="less" type="text/less">
   .container {
     border: 1px solid black;
     margin-bottom: 20px;
@@ -588,6 +621,73 @@
     }
     .column-right {
       background-color: #cd0000;
+    }
+  }
+  .type22{
+    .container_ {
+      max-width: 1920px;
+      height: 200px;
+      background: url("../assets/top.jpg") no-repeat center;
+    }
+    .container_ > h2 {
+      margin-top: 100px;
+      color: #fff;
+    }
+  }
+  .type23{
+    width:300px;
+    .father {
+      overflow:hidden;
+      .son{
+        margin:50%;
+      }
+    }
+  }
+  .type24{
+    height:200px;
+    width:100px;
+    writing-mode:vertical-lr;
+    .son{
+      width:100px;
+      height:100px;
+      background:yellow;
+      margin:auto;
+    }
+  }
+  .type25{
+    height: 200px;
+    width:300px;
+    position:relative;
+    .son{
+      position: absolute;
+      top:0px;right:0px;left:0px;bottom:0px;
+      background:yellow;
+      width:200px;height:50px;
+      margin:auto;
+    }
+  }
+  .type26{
+    span{
+      background:yellow;
+      margin-top: 10px;
+    }
+  }
+  .type27{
+    .box > img{
+      float: left;
+      width:100px;
+    }
+    .box > p{
+      text-align: left;
+      border: 1px solid red;
+      overflow: hidden;
+      margin-left:200px;
+    }
+  }
+  .type28{
+    .box > img{
+      height:96px;
+      margin-top:-30000px;
     }
   }
 </style>
