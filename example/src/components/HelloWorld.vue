@@ -29,6 +29,25 @@ export default {
           "幽灵空白节点",
         ]},
         {url:"/part2",text:"第四章",items:[
+          "透明图片占位，火狐纯img的表现",
+          "伪元素的content为图片，无法用样式控制其大小",
+          "设置src属性显示图片，以及无图片情况下显示alt内容",
+          "img{content:url(1.jpg)} <img>,和 <img src='1.jpg'>",
+          ":hover新增content属性，不过右键保存的图片依然还是src属性图片",
+          "甚至h标签也能搞个content属性",
+          "画表格的例子",
+          "正在加载中...动态效果",
+          "content生成图片例子",
+          "content计数器",
+          "padding影响滚动条",
+          "内联元素设置padding的表现爱你",
+          "padding画图标的妙用",
+          "用margin来改变尺寸和定位",
+          "利用margin的等高布局",
+          "margin合并",
+          "内联元素的margin渲染",
+          "margin失效",
+          "border妙用和等高布局",
         ]}
       ]
     }

@@ -219,6 +219,39 @@
         <img src="../assets/makelei.png" width="96" height="96" alt="">
       </div>
     </div>
+    <div class="container type29">
+      <h6 style="border: 1px solid red">可以看见3px下，火狐下dotted表现为圆点，chrome表现为方块,IE倒是一直都是圆点·1</h6>
+      <div class="box"></div>
+    </div>
+    <div class="container type30">
+      <h6>三道杠的另外一种画法</h6>
+      <div class="box"></div>
+    </div>
+    <div class="container type31">
+      <h6>border-color取决于color的一个例子</h6>
+      <a href class="add" title="继续上传">
+        添加图片
+      </a>
+    </div>
+    <div class="container type33">
+      <h6>利用border来绘制三角形</h6>
+      <div class="draw"></div>
+      <h6>利用border来绘制梯形部分，效果类似于圆角。（border-radius更加简单暴力）</h6>
+      <a href class="button">我是按钮</a>
+    </div>
+    <div class="container type34">
+      <h6>border等高布局技术（思考为什么父容器不用overflow:hidden）</h6>
+      <div class="box">
+        <nav>
+          <h3 class="nav">导航1</h3>
+          <h3 class="nav">导航1</h3>
+          <h3 class="nav">导航1</h3>
+        </nav>
+        <section>
+          <div class="module">模块1</div>
+        </section>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -688,6 +721,123 @@
     .box > img{
       height:96px;
       margin-top:-30000px;
+    }
+  }
+  .type29{
+    width:156px;
+    .box{
+      width:150px;
+      height:150px;
+      border: 3px dotted black;
+    }
+  }
+  .type30{
+    width:160px;
+    .box{
+      width:120px;
+      margin: auto;
+      height:20px;
+      border-top: 60px double;
+      border-bottom:20px solid;
+    }
+  }
+  .type31{
+    .add {
+      display: inline-block;
+      width: 76px; height: 76px;
+      color: #ccc;
+      border: 2px dashed;
+      text-indent: -12em;
+      transition: color .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .add:hover {
+      color: #34538b;
+    }
+    .add::before, .add::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+    .add::before {
+      width: 20px;
+      border-top: 4px solid;
+      margin: -2px 0 0 -10px;
+    }
+    .add::after {
+      height: 20px;
+      border-left: 4px solid;
+      margin: -10px 0 0 -2px;
+    }
+  }
+  .type33{
+    .draw{
+      margin:auto;
+      width:0px;
+      border-width: 10px 20px;
+      border-color: red transparent transparent;
+      border-style: solid
+    }
+    .button {
+      display: inline-block;
+      line-height: 36px;
+      padding: 0 40px;
+      color: #fff;
+      background-color: #cd0000;
+      position: relative;
+    }
+    .button:before,
+    .button:after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      border-style: solid;
+    }
+    .button:before {
+      top: -2px;
+      border-width: 0 2px 2px;
+      border-color: transparent transparent #cd0000;
+    }
+    .button:after {
+      bottom: -2px;
+      border-width: 2px 2px 0;
+      border-color: #cc0000 transparent transparent;
+    }
+  }
+  .type34{
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 100%;
+      margin: 0;
+      font-weight: 400;
+    }
+    .box {
+      border-left: 150px solid #333;
+      background-color: #f0f3f9;
+    }
+    /* 清除浮动影响，不能使用overflow:hidden */
+    .box:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    /* 布局主结构 */
+    .box > nav {
+      width: 150px;
+      margin-left: -150px;
+      float: left;
+    }
+    .box > section {
+      overflow: hidden;
+    }
+    /* 导航列表和模块列表 */
+    .nav {
+      line-height: 40px;
+      color: #fff;
+    }
+    .module {
+      line-height: 40px;
     }
   }
 </style>
