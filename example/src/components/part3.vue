@@ -42,8 +42,30 @@
     </div>
     <div class="container type6">
       <h6>vertical-align属性值 数值百分比类 </h6>
-      <span>字母x</span>
+      <span>FXXX xxx</span>
+      <span class="ver">字母x</span>
       <img src="../assets/makelei.png" width="92" height="92">
+    </div>
+    <div class="container type7">
+      <h6>vertical-align的实用性</h6>
+      <p>请选择xxx<i class="icon-arrow"></i></p>
+      <p>请选择xxx<i class="icon-arrow valign-1"></i></p>
+      <p>请选择xxx<i class="icon-arrow valign-2"></i></p>
+    </div>
+    <div class="container type8">
+      <div class="box">
+        <span class="shit2">OH SHIT</span>
+      </div>
+    </div>
+    <div class="container type9">
+      <div class="box">
+        <h4>图片vertical-align:middle</h4>
+        <p class="cell cell-1"><img src="../assets/makelei.png"></p>
+      </div>
+      <div class="box">
+        <h4>table-cell元素vertical-align:middle</h4>
+        <p class="cell cell-2"><img src="../assets/makelei.png"></p>
+      </div>
     </div>
   </div>
 </template>
@@ -145,8 +167,62 @@
     }
   }
   .type6{
-    span{
+    .ver{
       vertical-align: -50%;
+    }
+  }
+  .type7{
+    font-family: simsun;
+    .icon-arrow {
+      display: inline-block;
+      width: 20px; height: 20px;
+      background: url(../assets/arrow.svg) no-repeat center/20px 20px;;
+      border: 1px solid red;
+    }
+    .valign-1 {
+      vertical-align: middle;
+    }
+    .valign-2 {
+      vertical-align: -5px;
+    }
+  }
+  .type8{
+    .box{
+      height:100px;
+      .shit1{
+        line-height: 100px;
+      }
+      .shit2{
+        vertical-align: middle;
+      }
+    }
+  }
+  .type9{
+    .box {
+      width: 280px;
+      display: table;
+      margin: 1em auto;
+      text-align: left;
+    }
+    .box h4 {
+      display: table-row;
+      line-height: 3;
+    }
+    .cell {
+      height: 128px; width: 100%;
+      display: table-cell;
+      background-color: #f0f3f9;
+      text-align: center;
+    }
+    .cell img {
+      height: 96px;
+    }
+
+    .cell-1 img {
+      vertical-align: middle;
+    }
+    .cell-2 {
+      vertical-align: middle;
     }
   }
 </style>
