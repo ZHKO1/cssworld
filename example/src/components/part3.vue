@@ -12,12 +12,38 @@
       </div>
     </div>
     <div class="container type3">
-      <div class="box">
-        <img src="../assets/makelei.png" height="128"/>
-      </div>
+      <h6>box设置line-height扩大高度，span居中，同时content跟span保持同一个baseline线上</h6>
+      <h6>vertical-align: middle;能让content真正地在box垂直居中，而不是按照baseline来</h6>
+      <div class="box"><span>FUCK</span><div class="content">基于行高实现的多行文字垂直居中效果，需要vertical-align属性帮助。</div></div>
     </div>
     <div class="container type4">
-      <div class="box"><span>FUCK</span><div class="content">基于行高实现的多行文字垂直居中效果，需要vertical-align属性帮助。</div></div>
+      <h6>line-height:1.5、line-height:150%、line-height:1.5em的差别</h6>
+      <div class="box box-1">
+        <h3>标题</h3>
+        <p>内容</p>
+      </div>
+      <div class="box box-2">
+        <h3>标题</h3>
+        <p>内容</p>
+      </div>
+      <div class="box box-3">
+        <h3>标题</h3>
+        <p>内容</p>
+      </div>
+    </div>
+    <div class="container type5">
+      <h6>内联元素line-height的"大值特性"</h6>
+      <div class="box box1">
+        <span class="shit">span: line-height:20px</span>
+      </div>
+      <div class="box box2">
+        <span class="shit">span: line-height:96px</span>
+      </div>
+    </div>
+    <div class="container type6">
+      <h6>vertical-align属性值 数值百分比类 </h6>
+      <span>字母x</span>
+      <img src="../assets/makelei.png" width="92" height="92">
     </div>
   </div>
 </template>
@@ -43,6 +69,9 @@
     border: 1px solid black;
     margin-bottom: 20px;
     font-family: "微软雅黑";
+    h6{
+      margin:0.5em;
+    }
   }
   .type1{
     font-size: 14px;
@@ -66,24 +95,58 @@
     }
   }
   .type3{
-    .box{
-      line-height: 256px;
-    }
-  }
-  .type4{
     .box {
-      width: 480px;
+      width: 80%;
       line-height: 120px;
       background-color: #f0f3f9;
       margin: auto;
     }
     .content {
-      width: 300px;
+      width: 60%;
       display: inline-block;
       line-height: 20px;
       margin: 0 20px;
       text-align: left;
       vertical-align: middle;
+      background:yellow;
+    }
+  }
+  .type4{
+    .box   { font-size: 14px; }
+    .box-1 { line-height: 1.5; }
+    .box-2 { line-height: 150%; }
+    .box-3 { line-height: 1.5em; }
+    h3, p {
+      margin: 0;
+    }
+    h3 { font-size: 32px; }
+    p  { font-size: 20px; }
+  }
+  .type5{
+    .box {
+      width: 280px;
+      margin: 1em auto;
+      outline: 1px solid #beceeb;
+      background: #f0f3f9;
+    }
+    .box1 {
+      line-height: 96px;
+    }
+    .box1 .shit {
+      line-height: 20px;
+      display: inline-block;
+    }
+    .box2 {
+      line-height: 20px;
+    }
+    .box2 .shit{
+      line-height: 96px;
+      display: inline-block;
+    }
+  }
+  .type6{
+    span{
+      vertical-align: -50%;
     }
   }
 </style>
