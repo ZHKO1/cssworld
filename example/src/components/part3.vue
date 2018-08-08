@@ -133,7 +133,7 @@
       <h6>基于vertical-align属性的水平垂直居中弹框</h6>
       <div class="button"><button @click="type17Click">ROW!ROW!FIGHT THE POWER!</button></div>
       <div class="container" id="type17" style="display: none" @click="type17Click">
-        <span style="color:white;font-size: 14px;">xyz</span>
+        <span style="color:white;font-size: 14px;">xyz</span><span class="shit1" style="color:white;font-size: 14px;">xyz</span><span class="shit2" style="color:white;font-size: 14px;">xyz</span>
       </div>
     </div>
   </div>
@@ -463,12 +463,16 @@
     .container:after {
       content: "";
       display: inline-block;
+      vertical-align: middle;
       height: 100px;
       width:2px;
       background:yellow;
     }
-    span{
+    .shit1{
       vertical-align: top;
+    }
+    .shit2{
+      vertical-align: bottom;
     }
     .dialog {
       display: inline-block;
