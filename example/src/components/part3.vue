@@ -14,7 +14,7 @@
     <div class="container type3">
       <h6>box设置line-height扩大高度，span居中，同时content跟span保持同一个baseline线上</h6>
       <h6>vertical-align: middle;能让content真正地在box垂直居中，而不是按照baseline来</h6>
-      <div class="box"><span>FUCK</span><div class="content">基于行高实现的多行文字垂直居中效果，需要vertical-align属性帮助。</div></div>
+      <div class="box"><span>xxx</span><div class="content">基于行高实现的多行文字垂直居中效果，需要vertical-align属性帮助。</div></div>
     </div>
     <div class="container type4">
       <h6>line-height:1.5、line-height:150%、line-height:1.5em的差别</h6>
