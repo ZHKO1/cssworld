@@ -147,7 +147,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped rel="stylesheet/less" lang="less" type="text/less">
   .container {
     border: 1px solid black;
     margin-bottom: 20px;

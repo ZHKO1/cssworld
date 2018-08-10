@@ -54,7 +54,9 @@
     </div>
     <div class="container type8">
       <div class="box">
+        <span class="shit1">SHIT</span>
         <span class="shit2">OH SHIT</span>
+        <span class="shit3"></span>
       </div>
     </div>
     <div class="container type9">
@@ -133,7 +135,27 @@
       <h6>基于vertical-align属性的水平垂直居中弹框</h6>
       <div class="button"><button @click="type17Click">ROW!ROW!FIGHT THE POWER!</button></div>
       <div class="container" id="type17" style="display: none" @click="type17Click">
-        <span style="color:white;font-size: 14px;">xyz</span><span class="shit1" style="color:white;font-size: 14px;">xyz</span><span class="shit2" style="color:white;font-size: 14px;">xyz</span>
+        <div class="dialog">
+          <div class="content">内容占位</div>
+        </div>
+      </div>
+    </div>
+    <div class="container type18">
+      <h6>vertical-align是否会影响别的元素基线</h6>
+      <div class="box">
+        <span class="green dotted line text-top"> </span><!--
+       --><span class="green dotted line text-bottom"> </span><!--
+       --><span class="red dotted line top"> </span><!--
+       --><span class="red dotted line bottom"> </span><!--
+       --><span class="blue dotted line baseline"> </span><!--
+       --><span class="baseline center hover">
+            <span class="baseline">x</span>
+            <span class="short box bg-grey baseline"> </span>
+            <span class="taller box bg-grey top hover" style="height:100px;"> </span>
+            <span class="taller box bg-grey bottom hover" style="height:100px;"> </span>
+            <span class="taller box bg-grey middle hover" style="height:5em;">x</span>
+            <span class="short box bg-grey baseline"> </span>
+          </span>
       </div>
     </div>
   </div>
@@ -168,7 +190,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less" type="text/less">
+<style scoped rel="stylesheet/less" lang="less" type="text/less">
   .container {
     border: 1px solid black;
     margin-bottom: 20px;
@@ -273,12 +295,28 @@
   }
   .type8{
     .box{
-      height:100px;
+      width:50%;
+      margin:auto;
+      border:1px solid red;
+      line-height: 100px;
+      height: 100px;
       .shit1{
-        line-height: 100px;
+        display: inline-block;
+        height:80px;
+        vertical-align: middle;
+        border: 1px solid;
+        line-height: 30px;
       }
       .shit2{
+        display: inline-block;
+        vertical-align: baseline;
+      }
+      .shit3{
+        display: inline-block;
         vertical-align: middle;
+        height:100%;
+        width:1px;
+        background:red;
       }
     }
   }
@@ -463,10 +501,8 @@
     .container:after {
       content: "";
       display: inline-block;
+      height: 100%;
       vertical-align: middle;
-      height: 100px;
-      width:2px;
-      background:yellow;
     }
     .shit1{
       vertical-align: top;
@@ -487,6 +523,72 @@
       width: 240px;
       height: 120px;
       padding: 20px;
+    }
+  }
+  .type18{
+    .box{
+      width:50%;
+      margin: auto;
+      .text-top {
+        display: inline-block;
+        vertical-align: text-top;
+      }
+      .text-bottom {
+        display: inline-block;
+        vertical-align: text-bottom;
+      }
+      .top {
+        display: inline-block;
+        vertical-align: top;
+      }
+      .bottom {
+        display: inline-block;
+        vertical-align: bottom;
+      }
+      .baseline {
+        display: inline-block;
+        vertical-align: baseline;
+      }
+      .middle {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .center {
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+      }
+      .bg-grey {
+        background: #d3d3d3;
+      }
+      .box {
+        width: 40px;
+        min-width: 1em;
+        min-height: 1em;
+        &.taller {
+          height: 50px;
+        }
+        &.short {
+          height: 5px;        }
+      }
+      .line{
+        display: inline-block;
+        width: 100%;
+        margin-right: -100%;
+        position: relative;
+        z-index: 10;
+        border-top: 1px solid #000;
+        &.green{
+          border-color: green;
+        }
+        &.red{
+          border-color: red;
+        }
+        &.blue{
+          border-color: blue;
+        }
+      }
+
     }
   }
 </style>
