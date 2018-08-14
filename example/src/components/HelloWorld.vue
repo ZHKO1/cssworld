@@ -50,6 +50,25 @@ export default {
           "border妙用和等高布局",
         ]},
         {url:"/part3",text:"第五章",items:[
+          "不受字体和字号影响的内联元素的垂直居中对齐效果",
+          "所谓的em-box，半边距，内容区域是什么？",
+          "多行垂直居中",
+          "line-height:1.5、line-height:150%、line-height:1.5em的差别",
+          "内联元素line-height的大值特性",
+          "vertical-align属性值 数值百分比类",
+          "vertical-align的实用性",
+          "图片vertical-align:middle",
+          "table-cell元素vertical-align:middle",
+          "vertical-align和line-height之间的关系（容器高度不等于行高）",
+          "text-align:justify例子",
+          "inline-block与baseline的关系",
+          "利用inline-block基线原理的小图标对齐实例页面",
+          "vertial-align:middle与近似垂直居中",
+          "vertical-align文本类属性值深入实例,分别设置为16px 24px 32px试试看",
+          "基于vertical-align属性的水平垂直居中弹框",
+          "vertical-align是否会影响别的元素基线",
+        ]},
+        {url:"/part4",text:"第六章",items:[
         ]}
       ]
     }
