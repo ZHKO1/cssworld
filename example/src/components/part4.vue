@@ -50,6 +50,11 @@
       <div>
         <div class="me1">
           <img src="../assets/makelei.png" width="100" alt="">
+          <div>
+            <div style="float:left;width:100px;height:10px;background:blue"></div>
+            <div style="float:left;width:100px;height:10px;background:green"></div>
+            <div style="clear: both;"></div>
+          </div>
           <div class="fuck">工作生活，身体健康</div>
         </div>
         <div class="love">1984，蝇王，白鲸记，幻痛，原爆点，BIG BOSS，Kaz，Quite，Ocelot，The man who sold the world，Sins of the Father，Quite's theme,Here’s to You，Nuclear，HEAVENS DIVIDE</div>
@@ -61,6 +66,21 @@
         <div style="border:1px solid;height:20px;"></div>
         <div class="me"></div>
         <div style="border:1px solid;height:20px;background:yellow;margin-top:-200px;clear:both"></div>
+      </div>
+    </div>
+    <div class="container type7">
+      <h6>测试如何触发BFC</h6>
+      <div class="box">
+        <div class="me"></div>
+      </div>
+    </div>
+    <div class="container type8">
+      <h6>BFC与流体布局</h6>
+      <div>
+        <div class="me">
+          <img src="../assets/makelei.png" width="100" alt="">
+        </div>
+        <div class="fuck">工作生活，身体健康<div style="height:20px;clear:both"></div>疫苗事件，怪物猎人审批，中美贸易战，老龄化社会，雾锁中国，1984，蝇王，白鲸记，幻痛，原爆点，BIG BOSS，Kaz，Quite，Ocelot，The man who sold the world，Sins of the Father，Quite's theme,Here’s to You，Nuclear，HEAVENS DIVIDE,a,b,c,d,e,f,g,h,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
       </div>
     </div>
   </div>
@@ -166,7 +186,7 @@
       }
     }
     .fuck{
-      margin-left: 110px;
+      margin-left:100px;
       font-weight: bold;
     }
     .me1{
@@ -191,6 +211,33 @@
       width: 200px;
       border: 5px dashed black;
       background: white;
+    }
+  }
+  .type7{
+    .box{
+      display: inline-block;
+      border:1px solid blue;
+      .me{
+        float: left;
+        width: 100px;
+        height:100px;
+        background: yellow;
+      }
+    }
+  }
+  .type8{
+    .me{
+      border:1px solid blue;
+      float:left;
+      img{
+        display: block;
+      }
+    }
+    .fuck{
+      display: table-cell;
+      width:2000px;
+      word-break: break-word;
+      font-weight: bold;
     }
   }
 </style>
