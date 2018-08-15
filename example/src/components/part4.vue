@@ -58,10 +58,9 @@
     <div class="container type6">
       <h6>clear:both不靠谱的现象之二,clear元素的margin-top失效</h6>
       <div>
-        <div class="me">
-          <img src="../assets/makelei.png" width="100" alt="">
-        </div>
-        <div style="height:20px;background:yellow;margin-top:20px;clear:both"></div>
+        <div style="border:1px solid;height:20px;"></div>
+        <div class="me"></div>
+        <div style="border:1px solid;height:20px;background:yellow;margin-top:-200px;clear:both"></div>
       </div>
     </div>
   </div>
@@ -186,13 +185,12 @@
     }
   }
   .type6{
-    height: 500px;
+    height: 100px;
     .me{
-      border:1px solid blue;
-      float:left;
-      img{
-        display: block;
-      }
+      float: left;
+      width: 200px;
+      border: 5px dashed black;
+      background: white;
     }
   }
 </style>
