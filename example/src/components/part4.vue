@@ -83,6 +83,29 @@
         <div class="fuck">工作生活，身体健康<div style="height:20px;clear:both"></div>疫苗事件，怪物猎人审批，中美贸易战，老龄化社会，雾锁中国，1984，蝇王，白鲸记，幻痛，原爆点，BIG BOSS，Kaz，Quite，Ocelot，The man who sold the world，Sins of the Father，Quite's theme,Here’s to You，Nuclear，HEAVENS DIVIDE,a,b,c,d,e,f,g,h,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
       </div>
     </div>
+    <div class="container type9">
+      <h6>overflow剪裁结线border box</h6>
+      <div class="box">
+        <img src="../assets/top.jpg" width="500"/>
+      </div>
+    </div>
+    <div class="container type10">
+      <h6>overflow-x和overflow-y 永远不能实现一个方向溢出剪裁或者滚动，另一个方向内容溢出显示的效果</h6>
+      <div class="box">
+        <img src="../assets/makelei.png" width="500"/>
+      </div>
+    </div>
+    <div class="container type11">
+      <h6>来看PC端下浏览器滚动条的宽度,滚动条宽度为{{scrollWidth}}px</h6>
+      <div class="box">
+        <div class="in" id="in"></div>
+      </div>
+    </div>
+    <div class="container type12">
+      <h6>依赖overflow的样式表现</h6>
+      <div class="box">What a piece of shit...I mean, I feel horrible that I had to play this game in order to make this video. But I did it to demonstrate its dreadfulness and I forced myself to play it just so that you don't have to. So you should thank me for telling you to stay away from this horrible, steaming pile of goat shit.</div>
+      <div class="box1">What a piece of shit...I mean, I feel horrible that I had to play this game in order to make this video. But I did it to demonstrate its dreadfulness and I forced myself to play it just so that you don't have to. So you should thank me for telling you to stay away from this horrible, steaming pile of goat shit.</div>
+    </div>
   </div>
 </template>
 
@@ -94,9 +117,11 @@
     },
     data () {
       return {
+        scrollWidth:0
       }
     },
     mounted:function () {
+      this.scrollWidth = 100 - document.getElementById('in').clientWidth;
     }
   }
 </script>
@@ -238,6 +263,50 @@
       width:2000px;
       word-break: break-word;
       font-weight: bold;
+    }
+  }
+  .type9{
+    .box {
+      width: 200px; height: 80px;
+      margin: auto;
+      padding: 10px;
+      border: 10px solid;
+      overflow: hidden;
+      img{}
+    }
+  }
+  .type10{
+    .box {
+      width: 100px; height: 100px;
+      margin: auto;
+      padding: 10px;
+      border: 10px solid;
+      overflow-x: visible;
+      overflow-y: hidden;
+      img{}
+    }
+  }
+  .type11{
+    .box {
+      width:100px;height:100px;overflow: scroll;
+      .in{
+        height: 200px;
+        background: lightcyan;
+      }
+    }
+  }
+  .type12{
+    .box{
+      width:170px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .box1{
+      display: -webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:2;
+      overflow: hidden;
     }
   }
 </style>
