@@ -30,5 +30,16 @@ export default new Router({
       path: '/part4',
       component: part4
     },
-  ]
+  ],
+  mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    // 如果你的連結是帶 # 這種
+    // to.hash 就會有值(值就是連結)
+    // 例如 #3
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    }
+  }
 })

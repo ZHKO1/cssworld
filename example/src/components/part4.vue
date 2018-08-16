@@ -8,6 +8,7 @@
         </div>
         <div style="clear:both;"></div>
       </div>
+      <div><a name="shitandshit">锚点</a></div>
     </div>
     <div class="container type2">
       <h6>float的作用机制</h6>
@@ -105,6 +106,10 @@
       <h6>依赖overflow的样式表现</h6>
       <div class="box">What a piece of shit...I mean, I feel horrible that I had to play this game in order to make this video. But I did it to demonstrate its dreadfulness and I forced myself to play it just so that you don't have to. So you should thank me for telling you to stay away from this horrible, steaming pile of goat shit.</div>
       <div class="box1">What a piece of shit...I mean, I feel horrible that I had to play this game in order to make this video. But I did it to demonstrate its dreadfulness and I forced myself to play it just so that you don't have to. So you should thank me for telling you to stay away from this horrible, steaming pile of goat shit.</div>
+    </div>
+    <div class="container type13">
+      <h6>测试vue-router下能不能用锚点定位</h6>
+      <div><a href="#shitandshit">锚点</a></div>
     </div>
   </div>
 </template>
