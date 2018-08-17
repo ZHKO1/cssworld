@@ -110,6 +110,61 @@
     <div class="container type13">
       <h6>测试vue-router下能不能用锚点定位</h6>
       <div><a href="#shitandshit">锚点</a></div>
+      <div><a href="#">顶点锚点</a></div>
+    </div>
+    <div class="container type14">
+      <h6>深入锚点定位 看看怎么个由内而外法</h6>
+      <div class="box">
+        <div class="content"></div>
+        <div class="box">
+          <div class="content"></div>
+          <h4 id="title">标签</h4>
+          <div class="content"></div>
+        </div>
+      </div>
+      <p><a href="#title">点击测试</a></p>
+    </div>
+    <div class="container type15">
+      <h6>还是上面的例子，唯一不同的是改成overflow:hidden，依然也能定位</h6>
+      <div class="box">
+        <div class="content"></div>
+        <div class="box">
+          <div class="content"></div>
+          <h4 id="title1">标签</h4>
+          <div class="content"></div>
+        </div>
+      </div>
+      <p><a href="#title1">点击测试</a></p>
+    </div>
+    <div class="container type16">
+      <h6>锚点定位实战 幻灯片机制</h6>
+      <div class="box">
+        <div class="list" id="one">1</div>
+        <div class="list" id="two">2</div>
+        <div class="list" id="three">3</div>
+        <div class="list" id="four">4</div>
+      </div>
+      <div class="link">
+        <a class="click" href="#one">1</a>
+        <a class="click" href="#two">2</a>
+        <a class="click" href="#three">3</a>
+        <a class="click" href="#four">4</a>
+      </div>
+    </div>
+    <div class="container type17">
+      <h6>锚点定位实战 幻灯片机制（利用focus定位特性）</h6>
+      <div class="box">
+        <div class="list"><input id="one1">1</div>
+        <div class="list bg-blue"><input id="two1">2</div>
+        <div class="list bg-olive"><input id="three1">3</div>
+        <div class="list bg-orange"><input id="four1">4</div>
+      </div>
+      <div class="link">
+        <label class="click" for="one1">1</label>
+        <label class="click" for="two1">2</label>
+        <label class="click" for="three1">3</label>
+        <label class="click" for="four1">4</label>
+      </div>
     </div>
   </div>
 </template>
@@ -312,6 +367,57 @@
       -webkit-box-orient:vertical;
       -webkit-line-clamp:2;
       overflow: hidden;
+    }
+  }
+  .type14{
+    .box{
+      height:120px;
+      border:1px solid red;
+      overflow: auto;
+      .content{
+        height: 200px;
+        background-color:#eee;
+      }
+    }
+  }
+  .type15{
+    .box{
+      height:120px;
+      border:1px solid red;
+      overflow: hidden;
+      .content{
+        height: 200px;
+        background-color:#eee;
+      }
+    }
+  }
+  .type16{
+    .box{width:20em; height:10em; line-height:10em; border:1px solid #ddd; overflow:hidden; margin:auto;}
+    .list{background:#ddd; text-align:center;font-size:8em;}
+    .link{margin-top:1em;}
+    .click{display:inline-block; width:2em; height:2em; line-height:2em; border:1px solid #ccc; background:#f7f7f7; color:#333; font-size:1em; font-weight:bold; text-align:center; text-decoration:none;}
+    .click:hover{background:#eee; color:#345; text-decoration:none;}
+  }
+  .type17{
+    .box{width:20em; height:10em;line-height:10em;  border:1px solid #ddd; overflow:hidden; margin:auto;}
+    .list > input {
+      position: absolute; top:0;
+      height: 100%; width: 1px;
+      border:0; padding: 0; margin: 0;
+      clip: rect(0 0 0 0);
+    }
+    .list{height:100%;background:#ddd; text-align:center; position:relative;font-size:8em;}
+    .link{margin-top:1em;}
+    .click{display:inline-block; width:2em; height:2em; line-height:2em; border:1px solid #ccc; background:#f7f7f7; color:#333; font-size:1em; font-weight:bold; text-align:center; text-decoration:none;}
+    .click:hover{background:#eee; color:#345; text-decoration:none;}
+    .bg-blue {
+      background-color: #89C6FC;
+    }
+    .bg-olive {
+      background-color: #B9F2D8;
+    }
+    .bg-orange {
+      background-color: #FCCBA2;
     }
   }
 </style>
