@@ -166,6 +166,28 @@
         <label class="click" for="four1">4</label>
       </div>
     </div>
+    <div class="container type18">
+      <h6>内联元素作为包含块</h6>
+      <span>我是</span>
+      <span class="container_">
+        我是<big style="font-size: 200%;">字号很大的</big>文字<div style="position: absolute;top:-1px;right:-1px;left:-1px;bottom:-1px;border:1px dashed blue;"></div>
+      </span>
+    </div>
+    <div class="container type19">
+      <h6>内联元素作为包含块 单行下的兼容性 IE8到IE10在P容器左侧外部显示</h6>
+      <p><span><img src="../assets/makelei.png" width="50"></span></p>
+    </div>
+    <div class="container type20">
+      <h6>内联元素作为包含块 多行下的兼容性 IE和chrome表现一致，FireFox浏览器仅覆盖第一行</h6>
+      <span>我是</span>
+      <span class="container_">
+        我是<big style="font-size: 200%;">字号很大的</big>文字<div style="position: absolute;top:-1px;right:-1px;left:-1px;bottom:-1px;border:1px dashed blue;"></div>
+      </span>
+    </div>
+    <div class="container type21">
+      <h6>绝对定位元素的包裹性中的宽度自适应性也是相对于包含块的，如何不局限于宽度自适应性变为最大可用宽度</h6>
+      <a href="javascript:" class="icon-delete tips" data-title="删除">删除</a>
+    </div>
   </div>
 </template>
 
@@ -418,6 +440,81 @@
     }
     .bg-orange {
       background-color: #FCCBA2;
+    }
+  }
+  .type18{
+    .container_{
+      font-size: 30px;
+      padding:10px;
+      position: relative;
+    }
+  }
+  .type19{
+    height:90px;
+    p{
+      text-align: right;
+      span{
+        position: relative;
+        img{
+          position: absolute;
+          right:0;
+        }
+      }
+    }
+  }
+  .type20{
+    width:200px;
+    .container_{
+      position: relative;
+    }
+  }
+  .type21{
+    .tips[data-title] {
+      position: relative;
+    }
+    .tips[data-title]::before,
+    .tips[data-title]::after {
+      position: absolute;
+      left: 50%;
+      -ms-pointer-events: none;
+      pointer-events: none;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      visibility: hidden;
+      white-space: nowrap;
+    }
+    .tips[data-title]::before {
+      content: attr(data-title);
+      top: -33px;
+      padding: 2px 10px 3px;
+      line-height: 18px;
+      border-radius: 2px;
+      background-color: #333;
+      text-align: left;
+      color: #fff;
+      font-size: 12px;
+    }
+    .tips[data-title]::after {
+      content: "";
+      border: 6px solid transparent;
+      border-top-color: #333;
+      top: -10px;
+    }
+    .tips[data-title]:hover::before,
+    .tips[data-title]:hover::after {
+      -webkit-transition: visibility .1s .1s;
+      transition: visibility .1s .1s;
+      visibility: visible;
+    }
+
+    .icon-delete {
+      display: inline-block;
+      width: 20px; height: 20px;
+      background: url(../assets/makelei.png) no-repeat center/20px 20px;
+      background-size: 16px;
+      color: transparent;
+      font-size: 0;
     }
   }
 </style>
