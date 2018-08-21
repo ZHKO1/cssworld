@@ -188,6 +188,98 @@
       <h6>绝对定位元素的包裹性中的宽度自适应性也是相对于包含块的，如何不局限于宽度自适应性变为最大可用宽度</h6>
       <a href="javascript:" class="icon-delete tips" data-title="删除">删除</a>
     </div>
+    <div class="container type22">
+      <h6>无依赖absolute绝对定位1 图片左上角“TOP”表示</h6>
+      <div class="demo">
+        <img src="../assets/top1.png" class="top1"><img src="../assets/makelei.png" width="256"/>
+      </div>
+    </div>
+    <div class="container type23">
+      <h6>各类图标定位</h6>
+      <div class="nav">
+        <h4 class="nav-list">
+          <a href class="nav-a">
+            热门导航<i class="icon-hot"></i>
+          </a>
+        </h4>
+      </div>
+    </div>
+    <div class="container type24">
+      <h6>“无依赖绝对定位”与超越常规布局的排版实例页面</h6>
+      <div class="regist-box">
+        <div class="regist-group">
+          <label class="regist-label"><span class="regist-star">*</span>邮箱</label>
+          <div class="regist-cell">
+            <input type="email" class="regist-input"><span class="regist-remark regist-warn">
+                <i class="icon-warn"></i>邮箱格式不准确（示意）
+            </span>
+          </div>
+        </div>
+        <div class="regist-group">
+          <label class="regist-label"><span class="regist-star">*</span>密码</label>
+          <div class="regist-cell">
+            <input type="password" class="regist-input"><span class="regist-remark">
+                请输入6-16位密码，不能使用空格
+            </span>
+          </div>
+        </div>
+        <div class="regist-group">
+          <label class="regist-label">手机号码</label>
+          <div class="regist-cell">
+            <input type="tel" class="regist-input">
+          </div>
+        </div>
+        <div class="regist-group">
+          <i class="regist-label"></i>
+          <div class="regist-cell">
+            <a href="javascript:" class="regist-btn">立即注册</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container type25">
+      <h6>下拉列表的定位</h6>
+      <div class="search-box">
+        <input class="search-input" placeholder="搜索"><a href="javascript:" class="search-btn">搜索</a>
+        <div class="search-result">
+          <div class="search-datalist">
+            <a href="">搜索结果1</a>
+            <a href="">搜索结果2</a>
+            <a href="">搜索结果3</a>
+            <a href="">搜索结果4</a>
+            <a href="">搜索结果5</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container type26">
+      <h6>猴子也能看懂的下列表定位,试试box2设置为absolute和不设置有什么区别</h6>
+      <div class="box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+      </div>
+    </div>
+    <div class="container type27">
+      <h6>设置absolute的元素位置都是跟没设置absolute时位置有关</h6>
+      <div class="box">
+        <h6>标题<span>span</span></h6>
+        <h6>标题<div>div</div></h6>
+      </div>
+      <div class="box">
+        <h6>标题<span class="follow">span</span></h6>
+        <h6>标题<div class="follow">div</div></h6>
+      </div>
+    </div>
+    <div class="container type28">
+      <h6>float和absolute相遇</h6>
+      <div class="box">
+        <div class="nav">导航1</div>
+        <img class="follow" src="../assets/makelei.png" width="30px" alt="">
+        <div class="nav">导航2</div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -515,6 +607,134 @@
       background-size: 16px;
       color: transparent;
       font-size: 0;
+    }
+  }
+  .type22{
+    .demo {
+      width: 256px;
+      margin: auto;
+      border:1px solid blue;
+      position: relative;
+      .top1 {
+        //position: absolute;
+      }
+    }
+  }
+  .type23{
+    .nav {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      max-width: 600px;
+      margin: 1em auto;
+      background-color: #333;
+      text-align: center;
+    }
+    .nav-list {
+      display: table-cell;
+      font-weight: 400;
+    }
+    .nav-a {
+      display: block;
+      line-height: 20px;
+      padding: 20px;
+      color: #bbb;
+      text-decoration: none;
+    }
+    .nav-a:hover {
+      color: #fff;
+    }
+    .icon-hot {
+      position: absolute;
+      width: 28px; height: 11px;
+      margin: -6px 0 0 2px;
+      background: url(../assets/hot.gif);
+    }
+  }
+  .type24{
+    .regist-box { width: 346px; margin-left: auto; margin-right: auto; padding: 30px 0; }
+    .regist-group { margin: 20px 0; overflow: hidden; text-align: left;}
+    .regist-label { width: 70px; padding-top: 10px; float: left; }
+    .regist-cell { display: table-cell; *display: inline-block; }
+    .regist-input { height: 20px; line-height: 20px; width: 260px; padding: 9px 5px; border: 1px solid #d0d6d9; vertical-align: top; }
+    .regist-input:focus { border-color: #8DB2EB; outline: none;}
+    .regist-input:focus + .regist-remark,
+    .focus + .regist-remark { visibility: visible; }
+    .regist-btn { display: block; width: 160px; line-height: 40px; background-color: #be0000; color: #fff; text-align: center; text-decoration: none; }
+    .regist-btn:hover { background-color: #b00; }
+    .icon-warn {  position: absolute; margin-left: -18px; width: 16px; height: 20px; background: url(../assets/warn.gif) no-repeat center; }
+    .regist-star { position: absolute; margin-left: -1em; font-family: simsun; color: #f30; }
+    .regist-remark { position: absolute; margin: 10px 0 0 10px; color: #666; visibility: hidden; }
+    .regist-warn { padding-left: 16px; color: #be0000; }
+  }
+  .type25{
+    .search-box {
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .search-input { width: 200px; height: 20px; line-height: 20px; margin: 0; padding: 9px 39px 9px 9px; border: 1px solid #ddd; transition: border-color .15s; }
+    .search-input:focus { outline: none; border-color: #2ea7e0; }
+    .search-btn { width: 20px; height: 20px; border: 9px solid #fff; background: #ddd url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPdJREFUeNpi+k9lwMRAZYDLwCNAHAnEMkDMDqUjoeL4AZqLfwNxFhAz4MEg+V+4vIxuYApUjBOIG4H4DhD/hNKNUHEGqDqCBh6B8rmA+CgO9Ueh8gxQ9XgjZSqUrgBiKxwhBBIvg7KnEApDcajNdwikjLtQdVKEXPgSSssSiEcZKP2KULIRh9KPCRj4FEqLEjLQEUovJ2DgYihtRygMD5MYy4eJSYfZRKZDEE4C4n+EDPxFRE5hwGcoAw6vgbwTAU0azFA6BohPQQ3BaSgDGSXUXyyG5lNiIDZDhWESLBQUe7OBmA+IFwBxMUyCEexMOhSwZAOAAAMAVJM+EQ2rrOoAAAAASUVORK5CYII=) no-repeat center; text-indent: -9em; position: absolute; margin: 1px 0 0 -40px; transition: background-color .15s; overflow: hidden; }
+    .search-input:focus ~ .search-btn { background-color: #2ea7e0; }
+    .search-datalist { position: absolute; width: 248px; border: 1px solid #e6e8e9; background-color: #fff; box-shadow: 0px 1px 2px #d5d7d8; text-align: left; z-index: 1; }
+    .search-datalist a { display: block; line-height: 36px; padding-left: 12px; color: #5e5e5e; text-decoration: none; }
+    .search-datalist a:hover { color: #000; background-color: #f9f9f9; }
+    .search-result {
+       display: none;
+    }
+    .search-input:focus ~ .search-result {
+      display: block;
+    }
+  }
+  .type26{
+    .box{
+      position: relative;
+      width:200px;
+      margin: auto;
+      .box1{
+        width: 100%;
+        height: 50px;
+        background: yellow;
+      }
+      .box2{
+        position: absolute;
+        width:50%;
+        height:20px;
+        background:green;
+      }
+      .box3{
+        width:100%;
+        height:50px;
+        background:blue;
+      }
+    }
+  }
+  .type27{
+    height:150px;
+    .box{
+      width:100px;
+      margin: auto;
+      text-align: left;
+      .follow{
+        position: absolute;
+      }
+    }
+  }
+  .type28{
+    height:80px;
+    .box{
+      text-align: left;
+      .follow{
+        position: absolute;
+      }
+      .nav{
+        width:100px;
+        line-height: 40px;
+        background-color: #333;
+        color:#fff;
+        text-align: center;
+        float:left;
+      }
     }
   }
 </style>
