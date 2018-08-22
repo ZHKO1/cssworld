@@ -69,6 +69,23 @@ export default {
           "vertical-align是否会影响别的元素基线",
         ]},
         {url:"/part4",text:"第六章",items:[
+          "测试查看float特性之一“包裹性”里自适应性",
+          "float的作用机制",
+          "float与流动布",
+          "clear属性的测试",
+          "clear:both的作用本质",
+          "BFC与流体布局",
+          "overflow剪裁结线border box",
+          "深入锚点定位",
+          "幻灯片机制",
+          "内联元素作为包含块",
+          "无依赖absolute绝对定位",
+          "“无依赖绝对定位”与超越常规布局的排版实例页面",
+          "下拉列表的定位",
+          "absolute与text-align（针对IE做出兼容处理）",
+          "返回顶部，反馈按钮 实战例子",
+          "无依赖绝对定位和overflow不为hidden的例子，滚动条不出现",
+          "深入了解Clip，chrome依然还保留着滚动条",
         ]}
       ]
     }

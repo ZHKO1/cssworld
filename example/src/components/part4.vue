@@ -284,7 +284,7 @@
       <p><img src="../assets/makelei.png" width="100"></p>
     </div>
     <div class="container type30">
-      <h6>absolute与text-align</h6>
+      <h6>absolute与text-align（针对IE做出兼容处理）</h6>
       <p class="compa"><img src="../assets/makelei.png" width="100"></p>
     </div>
     <div class="container type31">
