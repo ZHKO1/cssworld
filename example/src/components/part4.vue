@@ -279,7 +279,83 @@
         <div class="nav">导航2</div>
       </div>
     </div>
-
+    <div class="container type29">
+      <h6>absolute与text-align</h6>
+      <p><img src="../assets/makelei.png" width="100"></p>
+    </div>
+    <div class="container type30">
+      <h6>absolute与text-align</h6>
+      <p class="compa"><img src="../assets/makelei.png" width="100"></p>
+    </div>
+    <div class="container type31">
+      <h6>返回顶部，反馈按钮 实战例子</h6>
+      <div class="main">
+        <p>
+        We passed upon the stair, we spoke of was and when<br>
+        Although I wasn't there, he said I was his friend<br>
+        Which came as some surprise I spoke into his eyes<br>
+        I thought you died alone, a long long time ago<br>
+        Oh no, not me<br>
+        I never lost control<br>
+        You're face to face<br>
+        With the Man Who Sold The World<br>
+        I laughed and shook his hand, and made my way back home<br>
+        I searched for form and land, for years & years I roamed<br>
+        I gazed a gazely stare at all the millions here<br>
+        We must have died alone, a long long time ago<br>
+        Who knows? not me<br>
+        We never lost control<br>
+        You're face to face<br>
+        With the Man Who Sold The World.<br>
+        Who knows? not me<br>
+        We never lost control<br>
+        You're face to face<br>
+        With the Man Who Sold The World<br>
+        </p>
+        <div class="alignright">
+            <span class="follow">
+              <img src="../assets/makelei.png">
+              <img src="../assets/logo.png">
+            </span>
+        </div>
+      </div>
+    </div>
+    <div class="container type32">
+      <h6 class="title">滚动条不出现</h6>
+      <div class="box">
+        <img src="../assets/ARX7.jpg">
+      </div>
+      <h6 class="title">绝对定位元素不跟随滚动</h6>
+      <div class="box">
+        <img src="../assets/ARX7.jpg">
+        <p>We passed upon the stair, we spoke of was and when
+          Although I wasn't there, he said I was his friend
+          Which came as some surprise I spoke into his eyes
+          I thought you died alone, a long long time ago
+          Oh no, not me
+          I never lost control
+          You're face to face
+          With the Man Who Sold The World
+          I laughed and shook his hand, and made my way back home
+          I searched for form and land, for years & years I roamed
+          I gazed a gazely stare at all the millions here
+          We must have died alone, a long long time ago
+          Who knows? not me
+          We never lost control
+          You're face to face
+          With the Man Who Sold The World.
+          Who knows? not me
+          We never lost control
+          You're face to face
+          With the Man Who Sold The World</p>
+      </div>
+    </div>
+    <div class="container type33">
+      <h6 class="title">深入了解Clip，chrome依然还保留着滚动条</h6>
+      <div class="box">
+        <img src="../assets/ARX7.jpg">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -616,7 +692,7 @@
       border:1px solid blue;
       position: relative;
       .top1 {
-        //position: absolute;
+        position: absolute;
       }
     }
   }
@@ -735,6 +811,91 @@
         text-align: center;
         float:left;
       }
+    }
+  }
+  .type29{
+    p {
+      width: 300px; height: 120px;
+      background-color: #eef0f6;
+      text-align: center;
+      border:1px solid red;
+    }
+    img {
+      position: absolute;
+    }
+  }
+  .type30{
+    p {
+      width: 300px; height: 120px;
+      background-color: #eef0f6;
+      text-align: center;
+      border:1px solid red;
+    }
+    img {
+      position: absolute;
+    }
+    .compa {
+      font-size: .1px;
+      font-size: -webkit-calc(1px - 1px);
+    }
+    .compa:before {
+      content: "\2002";
+    }
+  }
+  .type31{
+    .main{
+      width: 80%;
+      margin: auto;
+      background-color: #f0f3f9;
+      position: relative;
+      .alignright {
+        height: 0;
+        text-align: right;
+        overflow: hidden;
+      }
+      .alignright:before {
+        content: "\2002";
+      }
+
+      .follow {
+        position: absolute;
+        bottom: 0px;
+        z-index: 1;
+      }
+      .follow > img {
+        display: block;
+        margin: 10px;
+        width:50px;
+      }
+    }
+  }
+  .type32{
+    .box {
+      text-align: left;
+      width: 300px; height: 100px;margin-bottom:50px;
+      background-color: #f0f3f9;
+      overflow: auto;
+      border:1px solid blue;
+    }
+    .box > img {
+      width: 100px;
+      position: absolute;
+      clip:rect(0px,85px,70px,15px)
+    }
+  }
+  .type33{
+    .box {
+      text-align: left;
+      width: 300px; height: 100px;margin-bottom:50px;
+      background-color: #f0f3f9;
+      overflow: auto;
+      position: relative;
+      border:1px solid blue;
+    }
+    .box > img {
+      width: 100px;
+      position: absolute;
+      clip:rect(0px,0px,0px,0px)
     }
   }
 </style>
