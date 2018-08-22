@@ -86,7 +86,9 @@ export default {
           "返回顶部，反馈按钮 实战例子",
           "无依赖绝对定位和overflow不为hidden的例子，滚动条不出现",
           "深入了解Clip，chrome依然还保留着滚动条",
-        ]}
+        ]},
+        {url:"/part5",text:"第七章",items:[
+        ]},
       ]
     }
   }

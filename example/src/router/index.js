@@ -5,6 +5,7 @@ import part1 from '@/components/part1'
 import part2 from '@/components/part2'
 import part3 from '@/components/part3'
 import part4 from '@/components/part4'
+import part5 from '@/components/part5'
 
 Vue.use(Router)
 
@@ -29,6 +30,10 @@ export default new Router({
     {
       path: '/part4',
       component: part4
+    },
+    {
+      path: '/part5',
+      component: part5
     },
   ],
   mode: 'history',
