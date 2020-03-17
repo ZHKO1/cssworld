@@ -1,8 +1,8 @@
 <template>
   <ul>
     <li v-for="href in hrefArray">
-      <router-link :to="href.url">{{ href.text }}</router-link><br>
-      <ul>
+      <router-link :to="href.url">{{ href.text }}</router-link> <button class='button' @click='toggle(href)'>{{href.show? 'show' : 'hide'}}</button>
+      <ul v-bind:class="{ 'hidden': !href.show}">
         <li v-for="item in href.items">
           <span>{{ item }}</span>
         </li>
@@ -27,7 +27,7 @@ export default {
           "max-width权重",
           "max-width在更多，收起场景下的应用",
           "幽灵空白节点",
-        ]},
+        ], show: false},
         {url:"/part2",text:"第四章",items:[
           "透明图片占位，火狐纯img的表现",
           "伪元素的content为图片，无法用样式控制其大小",
@@ -48,7 +48,7 @@ export default {
           "内联元素的margin渲染",
           "margin失效",
           "border妙用和等高布局",
-        ]},
+        ], show: false},
         {url:"/part3",text:"第五章",items:[
           "不受字体和字号影响的内联元素的垂直居中对齐效果",
           "所谓的em-box，半边距，内容区域是什么？",
@@ -67,7 +67,7 @@ export default {
           "vertical-align文本类属性值深入实例,分别设置为16px 24px 32px试试看",
           "基于vertical-align属性的水平垂直居中弹框",
           "vertical-align是否会影响别的元素基线",
-        ]},
+        ], show: false},
         {url:"/part4",text:"第六章",items:[
           "测试查看float特性之一“包裹性”里自适应性",
           "float的作用机制",
@@ -86,12 +86,21 @@ export default {
           "返回顶部，反馈按钮 实战例子",
           "无依赖绝对定位和overflow不为hidden的例子，滚动条不出现",
           "深入了解Clip，chrome依然还保留着滚动条",
-        ]},
+        ], show: false},
         {url:"/part5",text:"第七章",items:[
-        ]},
+        ], show: false},
+        {url:"/CSSpart1",text:"CSS-Inspiration Part1",items:[
+        ], show: false},
       ]
     }
+  },
+  methods: {
+    toggle(obj){
+      console.log(obj);
+      obj.show = !obj.show;
+    }
   }
+
 }
 </script>
 
@@ -109,5 +118,13 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.button{
+ width: 150px;
+}
+
+.hidden{
+  display: none;
 }
 </style>
