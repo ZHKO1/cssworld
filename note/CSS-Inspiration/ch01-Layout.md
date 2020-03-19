@@ -67,7 +67,41 @@ https://chokcoco.github.io/CSS-Inspiration/
 参考 https://www.zhangxinxu.com/wordpress/2018/10/display-flex-css3-css/
 
 二. CSS实现瀑布流布局（colum+count）
+知识点：columns布局
+1. 直接相关属性
+  1). column-width: <length> | auto;
+    <length> 表示设定的最佳列宽值。实际呈现的每一栏的宽度可能与指定值不同，具体内容参见下面的细节描述。
+    auto 默认值。表示每一栏的宽度由其它CSS属性决定，例如column-count。
+    column-width有时候会失效，比如容器宽度600像素，设定的每一栏宽度是200像素，但是因为column-gap的默认值1em，所以会导致放不下三列，只能放两列，因此每列宽度为294px（字体大小设置为12px）
+    PS: 题外话，值得玩味的是如果字体大小设置小于12px(比如10px)，column-gap的1em还是按照12px来算，border设为1em表现倒没什么问题
+  2). column-count: <integer> | auto;
+    <integer> 表示分栏数目，整数值。
+    auto 默认值。表示分栏数目由其它CSS属性决定，例如column-width
+    column-count与column-width都有可能有更高的优先级，要看具体场景。优先级计算诀窍就是统一转换column-count值，哪个小就使用哪一个
+  3). columns column-width和column-count属性的缩写
+  4). column-rule-color: <color>
+  5). column-rule-style
+  6). column-rule-width: thin | medium | thick | <length>
+    thin：薄薄的，等同于1px；
+    medium（默认值）：薄厚均匀，等同于3px；至于为什么是3px按照作者的说法是因为column-rule-style:double至少3px才有效果
+    thick：厚厚的，等同于4px；
+  7). column-rule
+  8). column-span: none | all; 表示某一个内容是否跨多栏显示
+  9). column-fill 根据作者说法目前仅有firefox支持，暂且不搞了
+  10). column-gap: normal | <length-percentage>;
+    normal: 默认值。在多栏布局中为1em，在其它类型的布局中为0。
+    column-gap和columns属性发生冲突的时候，例如，column-gap太大，导致空间不足，此时，column-gap是会被舍弃的。
+2. 间接相关属性
+  1). break-after
+  1). break-before
+  1). break-inside
+    break-inside很好理解，就是控制能否断开就是了
+    问题是break-after和break-before简直见鬼了，完全搞不懂什么意思，网上似乎也没详细例子
 
+参考 https://www.zhangxinxu.com/wordpress/2019/01/css-css3-columns-layout/#column-width
+
+columns布局的场景（起点移动端页面的布局）这里也稍微做了个demo
+参考 https://www.zhangxinxu.com/wordpress/2017/02/css3-multiple-column-layout-read-horizontal/
 
 三. CSS实现瀑布流布局（display: grid）
 

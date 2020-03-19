@@ -40,6 +40,71 @@
         <div class="g-item"></div>
       </div>
     </div>
+    <div class="container type2_1">
+      <h6> 题外话 column布局的妙用 起点移动端页面的样式 {{type2_1_style.page}} </h6>
+      <div class="g-container" ref="type2_1_container" @click="type2_1_click" v-bind:style="{transform: 'translateX(' + type2_1_style.translateX + 'px' + ')'}">
+        <div>
+        ひとつめの言叶は梦<br>
+        第一个字是梦<br>
+        眠りの中から<br>
+        从睡梦之中<br>
+        胸の奥の 暗闇を<br>
+        将心灵深处的黑暗<br>
+        そっと 连れ出すの<br>
+        悄悄的带出<br>
+        ふたつめの言叶は风<br>
+        第二个字是风<br>
+        行く手を 教えて<br>
+        指引我前进的方向<br>
+        神样の腕の中へ<br>
+        向神的臂膀中<br>
+        翼をあおるの<br>
+        舞动着翅膀飞去<br>
+        とけていった 悲しいことを<br>
+        将那已被救赎的悲伤<br>
+        かぞえるように<br>
+        细细回味<br>
+        金色のリンゴが<br>
+        金色的苹果<br>
+        また ひとつ落ちる<br>
+        又落下了一颗<br>
+        见たこともない风景<br>
+        从未见过的风景<br>
+        そこが归る场所<br>
+        那就是归宿<br>
+        たったひとつのいのちに<br>
+        是生命唯一的<br>
+        たどりつく场所<br>
+        归宿<br>
+        古い魔法の本<br>
+        古老的魔法书<br>
+        月のしずく 夜のとばり<br>
+        月之水滴 夜之帷幕<br>
+        いつか逢える 予感だけ<br>
+        仅有何时相遇的预感<br>
+        we can fly<br>
+        我们可以飞翔<br>
+        we have wings<br>
+        我们拥有翅膀<br>
+        we can touch floating dreams<br>
+        我们可以触碰漂浮的梦<br>
+        call me from so far<br>
+        从远方呼唤我<br>
+        through the wind<br>
+        穿过风<br>
+        in the night<br>
+        在夜晚<br>
+        みっつめの言叶は hum…<br>
+        第三个字是 hum...<br>
+        耳をすましたら<br>
+        如侧耳倾听<br>
+        あなたのふるえる腕を<br>
+        你那颤抖的双臂<br>
+        そっと ときはなつ<br>
+        必将得到解放<br>
+        </div>
+      </div>
+    </div>
     <div class="container type3">
       <h6> CSS实现瀑布流布局（display: grid）</h6>
       <h6> 使用 grid-template-columns、grid-template-rows 分割行列 </h6>
@@ -75,9 +140,19 @@
   export default {
     name: 'CSSpart1',
     methods: {
+      type2_1_click: function(){
+        this.type2_1_style.translateX = this.type2_1_style.translateX - 300;
+        var div = this.$refs.type2_1_container;
+        this.type2_1_style.page = div.scrollWidth / 300;
+      }
     },
     data () {
       return {
+        type2_1_style: {
+          translateX: 0,
+          page: 0
+
+        }
       }
     },
     mounted:function () {
@@ -202,6 +277,19 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
+    }
+  }
+  .type2_1 {
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    .g-container {
+      margin: 0px;
+      padding: 0px;
+      column-width: 300px;
+      column-gap: 0px;
+      height: 350px;
+      animation: none 1s infinite;
     }
   }
   .type3 {
