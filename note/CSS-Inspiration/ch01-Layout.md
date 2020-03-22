@@ -104,4 +104,144 @@ columns布局的场景（起点移动端页面的布局）这里也稍微做了�
 参考 https://www.zhangxinxu.com/wordpress/2017/02/css3-multiple-column-layout-read-horizontal/
 
 三. CSS实现瀑布流布局（display: grid）
+知识点: grid布局
+给<div>这类块状元素元素设置display:grid或者给<span>这类内联元素设置display:inline-grid，差不多就是Grid布局了
+1. 作用在grid容器上	作用在grid子项上
+  1). grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
+  2). grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
+    <track-size>：划分田地的尺寸。可以是长度值，百分比值，以及fr单位（网格剩余空间比例单位）。
+    <line-name>：中间用来走路的田垄的名字，可以任意命名。
+    例子
+    .container {
+        grid-template-columns: 80px auto 100px;
+        grid-template-rows: 25% 100px auto 60px;
+    }
+    .container {
+        grid-template-columns: [第一根纵线] 80px [纵线2] auto [纵线3] 100px [最后的结束线];
+        grid-template-rows: [第一行开始] 25% [第一行结束] 100px [行3] auto [行4] 60px [行末];
+    }
+    .container {
+        grid-template-columns: repeat(24, 40px [col-start]);
+        // 等同于
+        //  grid-template-columns: 40px [col-start], 40px [col-start], /* ...省略20个...*/, 40px [col-start], 40px [col-start];
+    }
+    .container {
+        grid-template-columns: 1fr 1fr 1fr; //表示三等份
+        grid-template-columns: 200px 1fr 1fr 1fr; //划分剩余三等分
+        grid-template-columns: auto 1fr 1fr 1fr;
+        // 当有设置fr尺寸的时候，auto的尺寸表现为“包裹”，为内容宽度。如果没有设置fr尺寸的网格，则表现为拉伸。
+        grid-template-columns: auto 0.25fr .25fr .25fr;
+        // 首先fr计算需要的剩余空间尺寸是grid容器的宽度减去之前设置为auto的内容宽度（请注意是包裹状态）的宽度
+        // 后面3个0.25fr元素的宽度是：(容器宽度 - 内容宽度) * 0.25
+        // 再剩余下来的就是第一个网络宽度
+    }
+  3). grid-template-areas
+    .container {
+      grid-template-areas:
+        "<grid-area-name> | . | none | ..."
+        "...";
+    }
+    grid-area-name 对应网格区域的名称。
+    . 表示空的网格单元格。
+    none 没有定义网格区域。
+    具体例子如下
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "葡萄 葡萄 葡萄"
+            "龙虾 养鱼 养鱼"
+            "龙虾 养鱼 养鱼"
+            "西瓜 西瓜 西瓜";
+    }
+    <div class="container">
+        <div class="putao"></div>
+        <div class="longxia"></div>
+        <div class="yangyu"></div>
+        <div class="xigua"></div>
+    </div>
+    .putao { grid-area: 葡萄; }
+    .longxia { grid-area: 龙虾; }
+    .yangyu { grid-area: 养鱼; }
+    .xigua { grid-area: 西瓜; }
+  4). grid-template
+    // 这段主要是语法有点搞浆糊，暂且先这样了，以后有心情再研究
+    // 而且作者也推荐用grid属性
+    grid-template是grid-template-rows，grid-template-columns和grid-template-areas属性的缩写。
+    .container {
+        grid-template: none;
+    }
+    .container {
+        grid-template: <grid-template-rows> / <grid-template-columns>;
+    }
+    grid-template:
+        "葡萄 葡萄 葡萄" 1fr
+        "龙虾 养鱼 养鱼" 1fr
+        "龙虾 养鱼 养鱼" 1fr
+        "西瓜 西瓜 西瓜" 1fr
+        /1fr 1fr 1fr;
+  5). grid-column-gap: <line-size>;
+  6). grid-row-gap: <line-size>;
+      用来定义网格中网格间隙的尺寸
+     .container {
+         grid-template-columns: 2fr 1fr;
+         grid-template-rows: 1fr 2fr;
+         grid-column-gap: 10px;
+         grid-row-gap: 15px;
+     }
+  7). grid-gap: <grid-row-gap> <grid-column-gap>;
+    是grid-column-gap和grid-row-gap属性的缩写
+  8). justify-items: stretch | start | end | center; //网格元素的水平呈现方式
+  9). align-items: stretch | start | end | center; //网格元素的垂直呈现方式
+  10). place-items: <align-items> / <justify-items>;
+  11). justify-content: stretch | start | end | center | space-between | space-around | space-evenly;
+    水平上剩余空间，类似于flex布局的概念
+  12). align-content: stretch | start | end | center | space-between | space-around | space-evenly;
+  13). place-content: <align-content> / <justify-content>;
+  14). grid-auto-columns
+  15). grid-auto-rows
+    指定任何自动生成的网格轨道（也称为隐式网格轨道）的大小。 当网格项目多于网格中的单元格或网格项目放置在显式网格之外时，将创建隐式轨道
+    比如
+    .container {
+        display: grid;
+        width: 150px;
+        grid-template-columns: 60px 60px;
+        grid-template-rows: 30px 90px;
+        grid-auto-columns: 60px;
+    }
+    .item-a {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    .item-b {
+        /* 容器水平只有2个格子，但这里设定的是第3个，隐式网格创建 */
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+        background-color: rgba(255,255,0, .5);
+    }
+  16). grid-auto-flow: row | column | row dense | column dense
+    grid-auto-flow属性控制没有明确指定位置的grid子项的放置方式
+  17). grid
+    grid: none
+    grid: <grid-template>
+    grid: <grid-template-rows> / [ auto-flow && dense? ] <grid-auto-columns>?
+    grid: [ auto-flow && dense? ] <grid-auto-rows>? / <grid-template-columns>
+
+2. 作用在grid子项上
+    1). grid-column-start
+    2). grid-column-end
+    3). grid-row-start
+    4). grid-row-end
+    5). grid-column
+    6). grid-row
+    7). grid-area
+    8). justify-self: stretch | start | end | center; //单个网格元素的水平对齐方式
+    9). align-self: stretch | start | end | center;
+    10). place-items: <align-self> / <justify-self>;
+
+
+参考 https://www.zhangxinxu.com/wordpress/2018/11/display-grid-css-css3/
+参考 https://github.com/sylvainpolletvillard/postcss-grid-kiss
+参考 https://www.zhangxinxu.com/wordpress/2020/01/css-grid-auto-flow/
+参考 https://www.w3cplus.com/css3/understanding-the-css-grid-auto-placement-algorithm.html
 

@@ -120,6 +120,29 @@
         <div class="g-item"></div>
       </div>
     </div>
+    <div class="container type3_1">
+      <h6> grid布局1</h6>
+      <div class="container_">
+        <div class="putao">1</div>
+        <div class="longxia">2</div>
+        <div class="yangyu">3</div>
+        <div class="xigua">4</div>
+        <div class="fuck">请注意，这里运用了grid-auto-columns的属性</div>
+      </div>
+    </div>
+    <div class="container type3_2">
+      <h6> grid布局2 看看grid: auto-flow 50px / repeat(4, 1fr)会怎么显示</h6>
+      <div class="g-container">
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+      </div>
+    </div>
     <div class="container type_xx1">
       <h6>使用 mix-blend-mode 实现抖音 LOGO</h6>
       <div style="background: black;">
@@ -162,6 +185,13 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped rel="stylesheet/scss" lang="scss" type="text/scss">
+  @function randomNum($max, $min: 0, $u: 1) {
+    @return ($min + random($max)) * $u;
+  }
+  @function randomColor() {
+    @return rgb(randomNum(255), randomNum(255), randomNum(255));
+  }
+
   .container {
     border: 1px solid black;
     margin-bottom: 20px;
@@ -177,12 +207,6 @@
   .type1 {
     $lineCount: 4;
     $count: 3;
-    @function randomNum($max, $min: 0, $u: 1) {
-      @return ($min + random($max)) * $u;
-    }
-    @function randomColor() {
-      @return rgb(randomNum(255), randomNum(255), randomNum(255));
-    }
     .g-container {
       display: flex;
       flex-direction: row;
@@ -223,14 +247,6 @@
   }
   .type2 {
     $count: 32;
-
-    @function randomNum($max, $min: 0, $u: 1) {
-      @return ($min + random($max)) * $u;
-    }
-
-    @function randomColor() {
-      @return rgb(randomNum(255), randomNum(255), randomNum(255));
-    }
 
     .g-container {
       column-count: 4;
@@ -294,15 +310,6 @@
   }
   .type3 {
     $count: 8;
-
-    @function randomNum($max, $min: 0, $u: 1) {
-      @return ($min + random($max)) * $u;
-    }
-
-    @function randomColor() {
-      @return rgb(randomNum(255), randomNum(255), randomNum(255));
-    }
-
     .g-container {
       height: 400px;
       display: grid;
@@ -361,6 +368,62 @@
         grid-column: 4;
         grid-row: 6 / 9;
       }
+    }
+  }
+  .type3_1 {
+    .container_ {
+      display: grid;
+      width: 300px;
+      height: 300px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        "a a a"
+        "b c c"
+        "b c c"
+        "d d d"
+        ". . .";
+      grid-auto-columns: 30px;
+    }
+    .container_ > div {
+      outline: 1px dotted;
+      background-color: hsla(0,0%,100%,.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .putao { grid-area: a; }
+    .longxia { grid-area: b; }
+    .yangyu { grid-area: c; }
+    .xigua { grid-area: d; }
+    .fuck { grid-row: 5/6; grid-column: 1/5; }
+  }
+  .type3_2 {
+    $count: 20;
+    .g-container {
+      display: grid;
+      grid: auto-flow 50px / repeat(4, 1fr);
+    }
+    @for $i from 1 to $count+1 {
+      .g-item:nth-child(#{$i}) {
+        position: relative;
+        background: randomColor();
+        margin: 10px;
+
+        &::after {
+          content: "#{$i}";
+          position: absolute;
+          color: #fff;
+          font-size: 2vw;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .g-item:nth-child(1) {
+      grid-row: 1/4;
+
     }
   }
   .type_xx1{
