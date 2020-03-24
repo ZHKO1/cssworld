@@ -143,6 +143,149 @@
         <div class="g-item"></div>
       </div>
     </div>
+    <div class="container type4">
+      <h6> 多方案实现跨行或跨列布局</h6>
+      <div class="g-container">
+        <h6>float 实现</h6>
+        <div class="g-float">
+          <div class="g-item">0</div>
+          <div class="g-item">1</div>
+          <div class="g-item">2</div>
+        </div>
+        <h6>flex 实现</h6>
+        <div class="g-flex">
+          <div class="g-item">0</div>
+          <div class="g-item">1</div>
+          <div class="g-item">2</div>
+        </div>
+        <h6>grid 实现</h6>
+        <div class="g-grid">
+          <div class="g-item">0</div>
+          <div class="g-item">1</div>
+          <div class="g-item">2</div>
+        </div>
+      </div>
+    </div>
+    <div class="container type5">
+      <h6> 多种方案实现单列等宽，其他多列自适应均匀布局</h6>
+      <h6>display: grid 实现</h6>
+      <div class="g-grid">
+        <div class="g-item">0</div>
+        <div class="g-item">1</div>
+        <div class="g-item">2</div>
+        <div class="g-item">3</div>
+      </div>
+      <h6>display: flex 实现</h6>
+      <div class="g-flex">
+        <div class="g-item">0</div>
+        <div class="g-item">1</div>
+        <div class="g-item">2</div>
+        <div class="g-item">3</div>
+      </div>
+      <h6>position: aboslute + float 实现</h6>
+      <div class="g-position">
+        <div class="g-item">0</div>
+        <div class="g-item">1</div>
+        <div class="g-item">2</div>
+        <div class="g-item">3</div>
+      </div>
+      <h6>position: aboslute + float +非calc实现</h6>
+      <div class="g-justify">
+        <div class="g-left">0</div>
+        <div class="g-col">
+          <div class="g-row">
+            <div class="g-item-box">
+              <div class="g-item">1</div>
+            </div>
+            <div class="g-item-box">
+              <div class="g-item">2</div>
+            </div>
+            <div class="g-item-box">
+              <div class="g-item">3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container type6">
+      <h6> 6种实现多列等高的方法</h6>
+      <div class="g-container">
+        <h6>padding + margin + overflow，实现多列等高效果，兼容性好</h6>
+        <div class="g-padmar">
+          <div class="g-left">
+            content<br>
+          </div>
+          <div class="g-right">
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+          </div>
+        </div>
+        <h6>border实现多列等高，左边框宽度为200px，左列浮动，伪元素清除浮动</h6>
+        <div class="g-border">
+          <div class="g-left">
+            content<br>
+          </div>
+          <div class="g-right">
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+          </div>
+        </div>
+        <h6>父元素线性渐变背景色实现多列等高（同理各种颜色障眼法）</h6>
+        <div class="g-lineargradient">
+          <div class="g-left">
+            content<br>
+          </div>
+          <div class="g-right">
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+          </div>
+        </div>
+        <h6>display：flex实现多列等高</h6>
+        <div class="g-flex">
+          <div class="g-left">
+            content<br>
+          </div>
+          <div class="g-right">
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+          </div>
+        </div>
+        <h6>display：grid实现多列等高</h6>
+        <div class="g-grid">
+          <div class="g-left">
+            content<br>
+          </div>
+          <div class="g-right">
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+          </div>
+        </div>
+        <h6>display:table-cell 实现多列等高</h6>
+        <div class="g-table">
+          <div class="g-left">
+            content<br>
+          </div>
+          <div class="g-right">
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+            content<br>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container type_xx1">
       <h6>使用 mix-blend-mode 实现抖音 LOGO</h6>
       <div style="background: black;">
@@ -424,6 +567,300 @@
     .g-item:nth-child(1) {
       grid-row: 1/4;
 
+    }
+  }
+  .type4 {
+    .g-container {
+      margin: 20px auto;
+      width: 400px;
+    }
+    .g-item {
+      width: 190px;
+      height: 190px;
+      box-sizing: border-box;
+      border: 1px solid #666;
+      border-radius: 10px;
+      line-height: 190px;
+      font-size: 32px;
+      text-align: center;
+      cursor:pointer;
+      margin: 5px;
+      transition: .1s all;
+    }
+    .g-float {
+      overflow: hidden;
+      .g-item {
+        float: left;
+      }
+      .g-item:first-child {
+        height: 390px;
+      }
+      .g-item:first-child:hover {
+        height: 190px;
+        width: 390px;
+      }
+    }
+    .g-flex {
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex-direction: column;
+
+      .g-item:first-child {
+        height: 390px;
+      }
+    }
+    .g-flex:hover {
+      flex-direction: row;
+
+      .g-item:first-child {
+        height: 190px;
+        width: 390px;
+      }
+    }
+    .g-grid {
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-template-rows: repeat(2, 50%);
+
+      .g-item {
+        width: unset;
+        height: unset;
+      }
+
+      .g-item:first-child {
+        grid-row: 1 / 3;
+        grid-column: 1 / 2;
+      }
+    }
+    .g-grid:hover {
+      .g-item:first-child {
+        grid-row: 1 / 2;
+        grid-column: 1 / 3;
+      }
+    }
+  }
+  .type5 {
+    .g-left,
+    .g-item {
+      background: #3f51b5;
+      line-height: 200px;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+    }
+    .g-grid {
+      height: 200px;
+      background: #ff9800;
+      display: grid;
+      grid-template-columns: 200px repeat(3, 1fr);
+      grid-column-gap: 10px;
+      margin-bottom: 20px;
+    }
+    .g-flex {
+      height: 200px;
+      background: #ff9800;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      .g-item {
+        flex: 0 1 calc((100% - 200px - 30px) / 3);
+      }
+      .g-item:first-child {
+        flex: 0 1 200px;
+      }
+    }
+    .g-position {
+      position: relative;
+      height: 200px;
+      background: #ff9800;
+      margin-bottom: 20px;
+      .g-item {
+        float: left;
+        width: calc((100% - 200px - 30px) / 3);
+        margin-left: 10px;
+      }
+      .g-item:nth-child(2) {
+        float: left;
+        width: calc((100% - 200px - 30px) / 3);
+        margin-left: 210px;
+      }
+      .g-item:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        float: unset;
+        margin-left: unset;
+      }
+    }
+    .g-justify {
+      position: relative;
+      height: 200px;
+      background: #ff9800;
+      margin-bottom: 20px;
+
+      .g-col,
+      .g-row,
+      .g-item-box {
+        box-sizing: border-box;
+      }
+
+      .g-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+      }
+
+      .g-row {
+        margin-right: -5px;
+        margin-left: -5px;
+      }
+
+      .g-col {
+        position: absolute;
+        top: 0;
+        left: 210px;
+        right: 0;
+        height: 200px;
+        overflow: hidden;
+
+        &:before,
+        &:after {
+          display: table;//清除浮动
+          content: " ";
+        }
+
+        &:after {
+          clear: both;
+        }
+
+        .g-item-box {
+          position: relative;
+          float: left;
+          width: 33.33%;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+  .type6 {
+    h6{
+      color: black;
+    }
+    .g-container {
+      width: 100%;
+      margin: 0 auto;
+      line-height: 2;
+      color: #fff;
+      & > div {
+        margin-bottom: 10px;
+      }
+    }
+    .g-padmar {
+      position: relative;
+      overflow: hidden;
+      .g-left {
+        float: left;
+        width: 200px;
+        background: #4caf50;
+        padding-bottom:9999px;
+        margin-bottom:-9999px;
+      }
+      .g-right {
+        float: left;
+        width: 800px;
+        background: #99afe0;
+        padding-bottom: 9999px;
+        margin-bottom: -9999px;
+      }
+    }
+    .g-border {
+      position: relative;
+      width: 800px;
+      border-left: 200px solid #4caf50;
+      background: #99afe0;
+      &::after {
+        content: ".";
+        display:block;
+        height: 0;
+        clear: both;
+      }
+      .g-right {
+        width: 800px;
+      }
+      .g-left {
+        float: left;
+        width: 200px;
+        margin-left: -200px;
+      }
+    }
+    .g-lineargradient {
+      background: linear-gradient(90deg, #4caf50 0, #4caf50 20%, #99afe0 20%, #99afe0);
+      overflow: hidden;
+      .g-left {
+        float: left;
+        width: 200px;
+      }
+      .g-right {
+        float: left;
+        width: 800px;
+      }
+    }
+    .g-flex {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      .g-left {
+        flex: 200px 0 0 ;
+        background: #4caf50;
+      }
+      .g-right {
+        flex: auto 1 0;
+        background: #99afe0;
+      }
+    }
+    .g-grid {
+      display: grid;
+      // align-items: stretch; 默认值
+      grid-template-columns: 200px auto;
+
+      .g-left {
+        background: #4caf50;
+      }
+
+      .g-right {
+        background: #99afe0;
+      }
+    }
+    .g-table {
+      overflow:hidden;
+      display:table;
+
+      .g-left {
+        width: 200px;
+        display: table-cell;
+        background: #4caf50;
+      }
+
+      .g-right {
+        width: 800px;
+        display: table-cell;
+        background: #99afe0;
+      }
     }
   }
   .type_xx1{
