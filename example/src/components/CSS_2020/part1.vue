@@ -286,6 +286,32 @@
         </div>
       </div>
     </div>
+    <div class="container type7">
+      <h6> 圣杯布局</h6>
+      <div class="g-container">
+        <div class="g-middle">middle</div>
+        <div class="g-left">left</div>
+        <div class="g-right">right</div>
+      </div>
+    </div>
+    <div class="container type8">
+      <h6> 圣杯布局(flex)</h6>
+      <div class="g-container">
+        <div class="g-middle">middle</div>
+        <div class="g-left">left</div>
+        <div class="g-right">right</div>
+      </div>
+    </div>
+    <div class="container type9">
+      <h6> 双飞翼布局</h6>
+      <div class="g-container">
+        <div class="g-middle">
+          <div class="g-middle-inner">middle-inner </div>
+        </div>
+        <div class="g-left">left</div>
+        <div class="g-right">right</div>
+      </div>
+    </div>
     <div class="container type_xx1">
       <h6>使用 mix-blend-mode 实现抖音 LOGO</h6>
       <div style="background: black;">
@@ -849,18 +875,119 @@
     .g-table {
       overflow:hidden;
       display:table;
-
       .g-left {
         width: 200px;
         display: table-cell;
         background: #4caf50;
       }
-
       .g-right {
         width: 800px;
         display: table-cell;
         background: #99afe0;
       }
+    }
+  }
+  .type7 {
+    .g-container {
+      // overflow: hidden;
+      position: relative;
+      height: 100px;
+      padding: 0 200px;
+      min-width: 100px;
+      & > div {
+        height: 100px;
+        float: left;
+        text-align: center;
+        color: #fff;
+        line-height: 100px;
+        font-size: 3vw;
+      }
+    }
+    .g-middle {
+      position: relative;
+      width: 100%;
+      background: #cc6630;
+    }
+    .g-left {
+      position: relative;
+      width: 200px;
+      background: #ffcc00;
+      margin-left: -100%;
+      left: -200px;
+    }
+    .g-right {
+      position: relative;
+      width: 200px;
+      background: pink;
+      margin-left: -200px;
+      right: -200px;
+    }
+  }
+  .type8 {
+    .g-container {
+      position: relative;
+      height: 100px;
+      min-width: 100px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      & > div {
+        height: 100px;
+        text-align: center;
+        color: #fff;
+        line-height: 100px;
+        font-size: 12px;
+      }
+    }
+    .g-left{
+      order: 1;
+      flex: 0 0 200px;
+      background: #ffcc00;
+    }
+    .g-middle{
+      order: 2;
+      flex: 1 0 auto;
+      background: #cc6630;
+    }
+    .g-right{
+      order: 3;
+      flex: 0 0 200px;
+      background: pink;
+    }
+  }
+  .type9 {
+    .g-container {
+      position: relative;
+      height: 100px;
+      min-width: 400px;
+      & > div {
+        height: 100px;
+        float: left;
+        text-align: center;
+        color: #fff;
+        line-height: 100px;
+        font-size: 3vw;
+      }
+    }
+    .g-middle {
+      position: relative;
+      width: 100%;
+      background: #cc6630;
+      .g-middle-inner {
+        margin: 0 200px;
+      }
+    }
+    .g-left {
+      position: relative;
+      width: 200px;
+      background: #ffcc00;
+      margin-left: -100%;
+    }
+    .g-right {
+      position: relative;
+      width: 200px;
+      background: pink;
+      margin-left: -200px;
     }
   }
   .type_xx1{
