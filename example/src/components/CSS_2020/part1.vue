@@ -312,6 +312,37 @@
         <div class="g-right">right</div>
       </div>
     </div>
+    <div class="container type10">
+      <h6> 实现水平垂直居中最便捷的方法</h6>
+      <h6> 使用了 FFC/GFC 使 margin: auto 在垂直方向上居中元素</h6>
+      <h6> Prior to alignment via justify-content and align-self, any positive free space is distributed to auto margins in that dimension.</h6>
+      <h6> 在 flex 格式化上下文中，设置了 margin: auto 的元素，在通过 justify-content 和 align-self 进行对齐之前，任何正处于空闲的空间都会分配到该方向的自动 margin 中去</h6>
+      <h6> 请注意 display:grid 也能起到同样作用</h6>
+      <h6> 一般都是用justify-content: center;align-items: center;来控制，作者这招确实绝</h6>
+      <div class="g-container">
+        <div class="g-box"></div>
+      </div>
+    </div>
+    <div class="container type11">
+      <h6> 使用 margin auto 实现 flex 下的 justify-content: space-between</h6>
+      <ul class="g-flex">
+        <li>liA</li>
+        <li>liB</li>
+        <li>liC</li>
+        <li>liD</li>
+        <li>liE</li>
+      </ul>
+    </div>
+    <div class="container type12">
+      <h6> 使用 margin auto 实现 flex 下的 align-self: flex-end</h6>
+      <ul class="g-flex">
+        <li>liA</li>
+        <li>liB</li>
+        <li>liC</li>
+        <li>liD</li>
+        <li>liE</li>
+      </ul>
+    </div>
     <div class="container type_xx1">
       <h6>使用 mix-blend-mode 实现抖音 LOGO</h6>
       <div style="background: black;">
@@ -988,6 +1019,100 @@
       width: 200px;
       background: pink;
       margin-left: -200px;
+    }
+  }
+  .type10 {
+    .g-container {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      // display: grid;
+      // display: inline-flex;
+      // display: inline-grid;
+      border: 1px solid red;
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+    .g-box {
+      width: 40px;
+      height: 40px;
+      background: #000;
+      margin: auto;
+    }
+  }
+  .type11 {
+    .g-flex {
+      height: 100px;
+      box-sizing: border-box;
+      background: #037d65;
+      display: flex;
+      // justify-content: space-between;
+    }
+    ul{
+      padding:0;
+      margin:0;
+    }
+    li {
+      list-style-type: none;
+      width: 100px;
+      line-height: 100px;
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+      background: #333;
+      margin: auto;
+    }
+    li:first-child {
+      margin-left: 0;
+    }
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+  .type12 {
+    .g-flex {
+      height: 200px;
+      box-sizing: border-box;
+      background: #037d65;
+
+      display: flex;
+      // display: flex-inline;
+      // justify-content: space-around;
+    }
+    ul{
+      padding:0;
+      margin:0;
+    }
+    li {
+      // align-self: center;
+      list-style-type: none;
+      width: 100px;
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+      margin: auto;
+      margin-bottom: 0;
+      margin-top: auto;
+    }
+    li:nth-child(1) {
+      height: 100px;
+      background: #336699;
+    }
+    li:nth-child(2) {
+      height: 120px;
+      background: #669933;
+    }
+    li:nth-child(3) {
+      height: 140px;
+      background: #996633;
+    }
+    li:nth-child(4) {
+      height: 160px;
+      background: #229955;
+    }
+    li:nth-child(5) {
+      height: 180px;
+      background: #199652;
     }
   }
   .type_xx1{
