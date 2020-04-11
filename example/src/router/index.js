@@ -7,6 +7,7 @@ import part3 from '@/components/part3'
 import part4 from '@/components/part4'
 import part5 from '@/components/part5'
 import CSSpart1 from '@/components/CSS_2020/part1'
+import Video from '@/components/Video/'
 
 Vue.use(Router)
 
@@ -39,6 +40,10 @@ export default new Router({
     {
       path: '/CSSpart1',
       component: CSSpart1
+    },
+    {
+      path: '/video',
+      component: Video
     },
   ],
   mode: 'history',

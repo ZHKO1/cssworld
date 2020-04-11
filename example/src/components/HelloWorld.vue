@@ -91,6 +91,8 @@ export default {
         ], show: false},
         {url:"/CSSpart1",text:"CSS-Inspiration Part1",items:[
         ], show: false},
+        {url:"/video",text:"播放组件",items:[
+        ], show: false},
       ]
     }
   },
