@@ -2,7 +2,12 @@
   <div class='videoExample'>
     <myVideo
         :option='test'
-        @play = 'playCallback'
+        @loadedmetadata="videoLoadedmetadataEvent"
+        @timeupdate="videoTimeupdateEvent"
+        @play="videoPlayEvent"
+        @pause="videoPauseEvent"
+        @ended="videoEndedEvent"
+        @error="videoErrorEvent"
     />
   </div>
 </template>
@@ -14,14 +19,17 @@ export default {
   name: "Example",
   components: {myVideo: video},
   methods: {
-    playCallback: () => {
-
-    }
+    videoLoadedmetadataEvent: (duration) => {console.log('videoLoadedmetadataEvent', duration)},
+    videoTimeupdateEvent: (currentTime, duration) => {console.log('videoTimeupdateEvent', currentTime, duration)},
+    videoPlayEvent: () => {console.log('videoPlayEvent')},
+    videoPauseEvent: () => {console.log('videoPauseEvent')},
+    videoEndedEvent: () => {console.log('videoEndedEvent')},
+    videoErrorEvent: (message) => {console.log('videoErrorEvent', message)},
   },
   data() {
     return {
       test:{
-        url: 'fuck'
+        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4'
       }
     };
   },
