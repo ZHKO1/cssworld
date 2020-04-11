@@ -1,6 +1,9 @@
 <template>
   <div class='videoExample'>
-    <myVideo v-bind:option='test'/>
+    <myVideo
+        :option='test'
+        @play = 'playCallback'
+    />
   </div>
 </template>
 
@@ -10,7 +13,11 @@ import video from './lib/index.vue'
 export default {
   name: "Example",
   components: {myVideo: video},
-  methods: {},
+  methods: {
+    playCallback: () => {
+
+    }
+  },
   data() {
     return {
       test:{
