@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       test:{
-        src: mp4
+        src: "http://ivi.bupt.edu.cn/hls/cetv1.m3u8"
       }
     };
   },

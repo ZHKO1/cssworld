@@ -291,8 +291,6 @@ export default {
       percentage: 0,
       move: {
         status: false, // 是否可拖动
-        startX: 0, // 记录最开始点击的X坐标
-        left: 0 // 记录当前已经移动的距离
       }
     };
   },
@@ -328,14 +326,20 @@ export default {
     }
   },
   mounted: function() {
-    window.apple = this;
     this.$nextTick(() => {
       this.bindEvents();
-      /*
-      const barWidth = this.$refs.progress.clientWidth - dotWidth
-      const offsetWidth = this.percent * barWidth
-      this.moveSilde(offsetWidth)
-      */
+      var video = this.$refs.video;
+      if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(this.src);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+          //video.play();
+        });
+      }
+      else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = this.src;
+      }
     })
   }
 };
