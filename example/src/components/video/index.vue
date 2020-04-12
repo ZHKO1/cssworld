@@ -14,7 +14,7 @@
 
 <script>
 import video from './lib/index.vue'
-
+import mp4 from './Sample.mp4'
 export default {
   name: "Example",
   components: {myVideo: video},
@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       test:{
-        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4'
+        src: mp4
       }
     };
   },

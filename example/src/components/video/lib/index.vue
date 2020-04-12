@@ -25,19 +25,20 @@
       @error="videoErrorEvent"
     ></video>
     <div v-bind:class="[{ 'vjs-hidden': !loadingStatus }, 'vjs-loading']"></div>
-    <div class="vjs-control-bar progress-control" dir="ltr" ref="controlbar">
+    <div class="vjs-control-bar progress-control" dir="ltr">
       <div class="vjs-progress-control vjs-control"
-            @mousedown="progressDownEvent"
-            @touchstart.prevent="progressDownEvent">
+            ref="controlbar"
+            @click.stop.prevent="progressClickEvent">
         <div
           tabindex="0"
           class="vjs-progress-holder vjs-slider vjs-slider-horizontal"
           role="slider"
         >
           <div class="vjs-play-progress vjs-slider-bar"
+            ref="sliderbar"
             v-bind:style="progressStyle"
-            @mousedown="progressDownEvent"
-            @touchstart.prevent="progressDownEvent"
+            @mousedown.stop.prevent="progressDownEvent"
+            @touchstart.stop.prevent="progressDownEvent"
            >
           </div>
         </div>
@@ -93,6 +94,7 @@ export default {
       }
     },
     pause: function(parms){
+      console.log('fuckyou');
       var that = this;
       if(that.status == "paused"){
         return;
@@ -200,75 +202,68 @@ export default {
       return m + ":" + (t % 60 / 100).toFixed(2).slice(-2);
     },
     progressDownEvent: function(e){
-      this.move.status = true
-      this.move.startX = e.clientX || e.touches[0].pageX
-      this.move.left = this.$refs.mmProgressInner.clientWidth
-
       clearTimeout(this.hideTime);
       this.cleanTimeOutLoading();
-      var	bar = this.$refs.controlbar,
-        barW = bar.offsetWidth,
-        barLX = bar.offsetLeft,
-        barRX = barLX + barW;
-
-      //暂停播放
       this.preStatus = this.status;
       this.$refs.video.pause();
-      var cha = e.touches[0].pageX - barLX;
-      if(cha < 0){
-        cha = 0;
-      }else if(cha > barW){
-        cha = barW;
-      }
-      //计算移动的x距离百分比
-      that.bl = 100 * cha / barW;
-      that.timeBar.css('width', that.bl + '%');
+
+      this.move.status = true
+      let endX = e.pageX || e.touches[0].pageX
+      let rect = this.$refs.controlbar.getBoundingClientRect()
+
+      let width = Math.min(
+        this.$refs.controlbar.clientWidth,
+        Math.max(0, endX - rect.left)
+      )
+      this.percentage = 100 * width / this.$refs.controlbar.clientWidth;
     },
     progressMoveEvent: function(e){
       if (!this.move.status) {
-        return false
+        return false;
       }
-      e.preventDefault()
-      let endX = e.clientX || e.touches[0].pageX
-      let dist = endX - this.move.startX
-      let offsetWidth = Math.min(
-        this.$refs.mmProgress.clientWidth - dotWidth,
-        Math.max(0, this.move.left + dist)
-      )
-      this.moveSilde(offsetWidth)
-      this.commitPercent()
+      let endX = e.pageX || e.touches[0].pageX
+      let rect = this.$refs.controlbar.getBoundingClientRect()
 
-      var	bar = that.vControlBar[0],
-          barW = bar.offsetWidth,
-          barLX = bar.offsetLeft,
-          barRX = barLX + barW;
-      //计算 手指x坐标 减去 进度条的x坐标
-      var cha = e.touches[0].pageX - barLX;
-      if(cha < 0){
-        cha = 0;
-      }else if(cha > barW){
-        cha = barW;
-      }
-      //计算移动的x距离百分比
-      that.bl = 100 * cha / barW;
-      that.timeBar.width(that.bl + '%');
+      let width = Math.min(
+        this.$refs.controlbar.clientWidth,
+        Math.max(0, endX - rect.left)
+      )
+      this.percentage = 100 * width / this.$refs.controlbar.clientWidth;
     },
     progressUpEvent: function(){
+      if (!this.move.status) {
+        return false;
+      }
       this.move.status = false
 
-
-      that.video[0].currentTime = that.video[0].duration * that.bl / 100;
-      if(preStatus == "paused"){
-        that.container.removeClass('vjs-playing').addClass('vjs-paused');
-        that.vPlayButton.removeClass('vjs-playing').addClass('vjs-paused');
-        that.pause();
+      var videoNode = this.$refs.video;
+      videoNode.currentTime = this.duration * this.percentage / 100;
+      if(this.preStatus == "paused"){
+        this.pause();
       }else{
-        that.container.removeClass('vjs-paused').addClass('vjs-playing');
-        that.vPlayButton.removeClass('vjs-paused').addClass('vjs-playing');
-        that.play();
+        this.play();
       }
-      that.resetTimeOutHide();
+      this.resetTimeOutHide();
+    },
+    progressClickEvent: function(e){
+      this.preStatus = this.status;
+      let endX = e.pageX || e.touches[0].pageX
+      let rect = this.$refs.controlbar.getBoundingClientRect()
 
+      let width = Math.min(
+        this.$refs.controlbar.clientWidth,
+        Math.max(0, endX - rect.left)
+      )
+      this.percentage = 100 * width / this.$refs.controlbar.clientWidth;
+
+      var videoNode = this.$refs.video;
+      videoNode.currentTime = this.duration * this.percentage / 100;
+      if(this.preStatus == "paused"){
+        this.pause();
+      }else{
+        this.play();
+      }
+      this.resetTimeOutHide();
     },
     bindEvents() {
       document.addEventListener('mousemove', this.progressMoveEvent)
@@ -332,6 +327,7 @@ export default {
     }
   },
   mounted: function() {
+    window.apple = this;
     this.$nextTick(() => {
       this.bindEvents();
       /*
@@ -444,6 +440,7 @@ export default {
       min-width: 100%;
       .vjs-progress-holder {
         font-size: inherit;
+        margin: 0px;
         .vjs-play-progress {
           background: #0bf1f9;
 
