@@ -241,7 +241,8 @@ export default {
       if(this.preStatus == "paused"){
         this.pause();
       }else{
-        this.play();
+        console.log(this.percentage);
+        (this.percentage < 100) && this.play();
       }
       this.resetTimeOutHide();
     },
