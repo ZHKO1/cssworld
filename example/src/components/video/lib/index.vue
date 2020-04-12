@@ -341,6 +341,9 @@ export default {
         video.src = this.src;
       }
     })
+  },
+  beforeDestroy: function(){
+    this.unbindEvents();
   }
 };
 </script>
