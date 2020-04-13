@@ -2,6 +2,7 @@
   <div
     v-bind:class="containerClass"
     tabindex="-1"
+    ref="videoContaner"
   >
     <div class="vjs-video-container">
       <video
@@ -56,7 +57,7 @@
         <span class="vjs-duration-display" role="presentation">{{stom(this.duration)}}</span>
       </div!-->
       <div class="vjs-space"></div>
-      <div class="vjs-fullscreen tofull" @click.stop.prevent="toggleFullscreen">
+      <div v-bind:class="fullscreenButtonClass" @click.stop.prevent="toggleFullscreen">
         <img class="tofull" src="./image/tofull.png" alt />
         <img class="exitfull" src="./image/exitfull.png" alt />
       </div>
@@ -180,20 +181,33 @@ export default {
       }, 5000);
     },
     toggleFullscreen: function(){
-      //TODO 参考cctv的全屏功能
-      return;
-      var that = this;
-      var t = that.$refs.video;
-      if(!that.isInFullScreen){
-        t.requestFullscreen ? (t.requestFullscreen(),
-            that.isInFullScreen = !0) : t.mozRequestFullScreen ? (t.mozRequestFullScreen(),
-              that.isInFullScreen = !0) : t.webkitRequestFullscreen ? (t.webkitRequestFullscreen(),
-                that.isInFullScreen = !0) : t.webkitEnterFullscreen && (t.webkitEnterFullscreen(),
-                that.isInFullScreen = !0);
+      var videoContaner = this.$refs.videoContaner;
+      if(!this.fullscreenStatus){
+        if (videoContaner.RequestFullScreen) {
+            videoContaner.RequestFullScreen();
+        } else if (videoContaner.webkitRequestFullScreen) {
+            videoContaner.webkitRequestFullScreen();
+        } else if (videoContaner.mozRequestFullScreen) {
+            videoContaner.mozRequestFullScreen();
+        } else if (videoContaner.msRequestFullscreen) {
+            videoContaner.msRequestFullscreen();
+        } else {
+        }
+        this.fullscreenStatus = true;
       }else{
-        //document.webkitExitFullscreen && document.webkitExitFullscreen(),
-        //this.isInFullScreen = !1;
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        } else {
+        }
+        this.fullscreenStatus = false;
       }
+      return;
     },
     stom: function(t) {
       var m = Math.floor(t / 60);
@@ -289,7 +303,8 @@ export default {
       percentage: 0,
       move: {
         status: false, // 是否可拖动
-      }
+      },
+      fullscreenStatus: false,
     };
   },
   computed: {
@@ -319,6 +334,17 @@ export default {
         width: this.percentage + '%'
       }
       return style;
+    },
+    fullscreenButtonClass: function(){
+      var result = [
+        "vjs-fullscreen"
+        ];
+      if(this.fullscreenStatus) {
+        result.push("exitfull");
+      } else {
+        result.push("tofull");
+      }
+      return result;
     }
   },
   mounted: function() {
@@ -487,6 +513,7 @@ export default {
           }
         }
       }
+
     }
 
     .vjs-play-pause-button {
