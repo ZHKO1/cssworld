@@ -26,13 +26,13 @@
       <div v-bind:class="[{ 'vjs-hidden': !loadingStatus }, 'vjs-loading']"></div>
     </div>
     <div class="vjs-control-bar progress-control" dir="ltr">
-      <div class="vjs-progress-control vjs-control"
-            ref="controlbar"
-            @click.stop.prevent="progressClickEvent">
+      <div class="vjs-progress-control vjs-control">
         <div
           tabindex="0"
           class="vjs-progress-holder vjs-slider vjs-slider-horizontal"
           role="slider"
+          ref="controlbar"
+          @click.stop.prevent="progressClickEvent"
         >
           <div class="vjs-play-progress vjs-slider-bar"
             ref="sliderbar"
@@ -425,7 +425,7 @@ export default {
   }
 
   .vjs-control-bar {
-    background: transparent;
+    background: #1a1a1a;
     height: 42px;
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
@@ -451,21 +451,26 @@ export default {
       line-height: 0px;
 
       .vjs-progress-control {
-        height: 15px;
+        height: 4px;
+        margin-top: 5px;
+        background: #111111;
         max-width: 100%;
         min-width: 100%;
-
-        &.vjs-slider{
-          &:focus{
-            text-shadow: 0em 0em 0em white;
-            -webkit-box-shadow: 0 0 0em #fff;
-            box-shadow: 0 0 0em #fff;
-          }
-        }
 
         .vjs-progress-holder {
           margin: 0px;
           height: 4px;
+
+          &.vjs-slider{
+            background: #111111;
+            margin-right: 10px;
+            &:focus{
+              text-shadow: 0em 0em 0em white;
+              -webkit-box-shadow: 0 0 0em #fff;
+              box-shadow: 0 0 0em #fff;
+            }
+          }
+
           .vjs-play-progress {
             background: #DC1D33;
 
