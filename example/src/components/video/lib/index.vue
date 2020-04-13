@@ -2,29 +2,29 @@
   <div
     v-bind:class="containerClass"
     tabindex="-1"
-    @click.stop.prevent="containerClickHover"
-    @mouseover.stop.prevent="containerClickHover"
   >
-    <video
-      ref="video"
-      class="vjs-tech"
-      preload="auto"
-      webkit-playsinline="true"
-      playsinline="playsinline"
-      x-webkit-airplay="allow"
-      x5-video-player-type="h5"
-      x5-video-player-fullscreen="true"
-      x5-video-orientation="landscape"
-      tabindex="-1"
-      v-bind:src="option.src"
-      @loadedmetadata="videoLoadedmetadataEvent"
-      @timeupdate="videoTimeupdateEvent"
-      @play="videoPlayEvent"
-      @pause="videoPauseEvent"
-      @ended="videoEndedEvent"
-      @error="videoErrorEvent"
-    ></video>
-    <div v-bind:class="[{ 'vjs-hidden': !loadingStatus }, 'vjs-loading']"></div>
+    <div class="vjs-video-container">
+      <video
+        ref="video"
+        class="vjs-tech"
+        preload="auto"
+        webkit-playsinline="true"
+        playsinline="playsinline"
+        x-webkit-airplay="allow"
+        x5-video-player-type="h5"
+        x5-video-player-fullscreen="true"
+        x5-video-orientation="landscape"
+        tabindex="-1"
+        v-bind:src="option.src"
+        @loadedmetadata="videoLoadedmetadataEvent"
+        @timeupdate="videoTimeupdateEvent"
+        @play="videoPlayEvent"
+        @pause="videoPauseEvent"
+        @ended="videoEndedEvent"
+        @error="videoErrorEvent"
+      ></video>
+      <div v-bind:class="[{ 'vjs-hidden': !loadingStatus }, 'vjs-loading']"></div>
+    </div>
     <div class="vjs-control-bar progress-control" dir="ltr">
       <div class="vjs-progress-control vjs-control"
             ref="controlbar"
@@ -39,30 +39,30 @@
             v-bind:style="progressStyle"
             @mousedown.stop.prevent="progressDownEvent"
             @touchstart.stop.prevent="progressDownEvent"
-           >
+          >
           </div>
         </div>
       </div>
     </div>
     <div class="vjs-control-bar" dir="ltr">
-      <button v-bind:class="buttonClass" type="button" @click.stop.prevent="switchPlayIcon">
-        <span class="vjs-icon-placeholder"></span>
-      </button>
-      <div class="vjs-current-time vjs-time-control vjs-control">
+      <div v-bind:class="buttonClass" @click.stop.prevent="switchPlayIcon">
+        <img class="playing" src="./image/playing.png" alt />
+        <img class="paused" src="./image/paused.png" alt />
+      </div>
+      <!--div class="vjs-current-time vjs-time-control vjs-control">
         <span class="vjs-current-time-display" role="presentation">{{stom(this.currentTime)}}</span>
       </div>
       <div class="vjs-duration vjs-time-control vjs-control">
         <span class="vjs-duration-display" role="presentation">{{stom(this.duration)}}</span>
-      </div>
+      </div!-->
       <div class="vjs-space"></div>
       <div class="vjs-fullscreen tofull" @click.stop.prevent="toggleFullscreen">
         <img class="tofull" src="./image/tofull.png" alt />
         <img class="exitfull" src="./image/exitfull.png" alt />
       </div>
     </div>
-    <div class="vjs-debugger"></div>
-    <div class="log vjs-hidden"></div>
   </div>
+
 </template>
 
 <script>
@@ -89,12 +89,11 @@ export default {
       var videoNode = that.$refs.video;
       if(!parms){
         videoNode.play();
-        that.resetTimeOutHide();
+        //that.resetTimeOutHide();
         that.resetTimeOutLoading();
       }
     },
     pause: function(parms){
-      console.log('fuckyou');
       var that = this;
       if(that.status == "paused"){
         return;
@@ -169,7 +168,7 @@ export default {
         this.userActiveStatus = true;
       } else {
       }
-      this.resetTimeOutHide();
+      //this.resetTimeOutHide();
     },
     resetTimeOutHide: function(){
       var that = this;
@@ -241,10 +240,9 @@ export default {
       if(this.preStatus == "paused"){
         this.pause();
       }else{
-        console.log(this.percentage);
         (this.percentage < 100) && this.play();
       }
-      this.resetTimeOutHide();
+      //this.resetTimeOutHide();
     },
     progressClickEvent: function(e){
       this.preStatus = this.status;
@@ -264,7 +262,7 @@ export default {
       }else{
         this.play();
       }
-      this.resetTimeOutHide();
+      //this.resetTimeOutHide();
     },
     bindEvents() {
       document.addEventListener('mousemove', this.progressMoveEvent)
@@ -311,9 +309,7 @@ export default {
     },
     buttonClass: function(){
       var result = [
-        "vjs-play-control",
-        "vjs-control",
-        "vjs-button",
+        "vjs-play-pause-button",
         ];
       result.push("vjs-" + this.status);
       return result;
@@ -399,78 +395,117 @@ export default {
 
 .video-js {
   font-size: 15px;
+  position: relative;
 
   *{
     outline: none;
   }
 
-  .vjs-loading {
+  .vjs-video-container{
     position: absolute;
-    left: 50%;
-    width: 2.6em;
-    height: 2.6em;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    background-image: url("./image/loading.png");
-    background-repeat: round;
-    -webkit-animation: loadingImage 1.5s infinite linear;
-    animation: loadingImage 1.5s infinite linear;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 57px;
+
+    .vjs-loading {
+      position: absolute;
+      left: 50%;
+      width: 2.6em;
+      height: 2.6em;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background-image: url("./image/loading.png");
+      background-repeat: round;
+      -webkit-animation: loadingImage 1.5s infinite linear;
+      animation: loadingImage 1.5s infinite linear;
+    }
   }
 
   .vjs-control-bar {
     background: transparent;
-    height: 4em;
+    height: 42px;
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 6px;
+    padding-bottom: 12px;
+
 
     &.progress-control{
       position: absolute;
-      bottom: 4em;
-      height: 1em;
-    }
+      left: 0px;
+      right: 0px;
+      bottom: 42px;
+      width: 100%;
+      height: 15px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      font-size: 0px;
+      line-height: 0px;
 
-    .vjs-slider{
-      &:focus{
-        text-shadow: 0em 0em 0em white;
-        -webkit-box-shadow: 0 0 0em #fff;
-        box-shadow: 0 0 0em #fff;
-      }
-    }
+      .vjs-progress-control {
+        height: 15px;
+        max-width: 100%;
+        min-width: 100%;
 
-    .vjs-progress-control {
-      height: 1em;
-      max-width: 100%;
-      min-width: 100%;
-      .vjs-progress-holder {
-        font-size: inherit;
-        margin: 0px;
-        .vjs-play-progress {
-          background: #0bf1f9;
+        &.vjs-slider{
+          &:focus{
+            text-shadow: 0em 0em 0em white;
+            -webkit-box-shadow: 0 0 0em #fff;
+            box-shadow: 0 0 0em #fff;
+          }
+        }
 
-          &::before{
-            content: " ";
-            width: 0.6em;
-            height: 1em;
-            background: white;
-            border-radius: 0.1em;
+        .vjs-progress-holder {
+          margin: 0px;
+          height: 4px;
+          .vjs-play-progress {
+            background: #DC1D33;
+
+            &::before{
+              content: " ";
+              width: 10px;
+              height: 10px;
+              background: white;
+              border-radius: 5px;
+              position: absolute;
+              right: -10px;
+              top: -3px;
+            }
           }
         }
       }
     }
-    .vjs-play-control {
-      height: 4em;
-      line-height: 4em;
-      width: 3em;
+
+    .vjs-play-pause-button {
+      width: 27px;
+      height: 24px;
+      display: flex;
+      cursor: pointer;
+      img {
+        display: none;
+        width: 27px;
+        height: 24px;
+        margin: auto;
+      }
+      &.vjs-playing img.playing{
+        display: block;
+      }
+      &.vjs-paused img.paused{
+        display: block;
+      }
     }
     .vjs-time-control {
       display: block;
-      height: 4em;
-      line-height: 4em;
+      height: 42px;
+      line-height: 42px;
       padding-left: 0.2em;
       padding-right: 0.2em;
 
@@ -491,16 +526,15 @@ export default {
       flex: 1;
     }
     .vjs-fullscreen {
-      width: 3em;
-      height: 4em;
-      line-height: 4em;
-      padding-left: 0.8em;
-      padding-top: 1.25em;
-      padding-right: 0.8em;
+      width: 24px;
+      height: 24px;
+      display: flex;
       cursor: pointer;
       img {
         display: none;
-        width: 100%;
+        width: 24px;
+        height: 24px;
+        margin: auto;
       }
       &.tofull img.tofull{
         display: block;
@@ -520,18 +554,7 @@ export default {
       }
     }
   }
-
-  &.vjs-user-inactive .vjs-control-bar{
-    display: none;
-  }
-
-  .vjs-debugger {
-    position: absolute;
-    width: 4em;
-    height: 4em;
-    top: 1.25em;
-    right: 1.25em;
-  }
 }
+
 
 </style>
